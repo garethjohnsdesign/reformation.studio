@@ -1,0 +1,161 @@
+---
+layout: default
+---
+
+<!-- Page Image -->
+{% if page.image %}
+<section class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y">
+    <div class="small-12 cell">
+
+      {% assign image = page.image %}
+      <div data-interchange="{% include images/interchange-img-small-12-medium-12-cell.html %}" class="light-gray-background image">
+        {% if page.video %}
+        <div class="grid-y height-100 align-center video content">
+          <div class="shrink cell text-center" data-src="{{page.video}}">
+            <a href="{{page.video}}" class="white"><svg class="icon icon-play_arrow"><use xlink:href="/assets/icons/symbol-defs.svg#icon-play_arrow"></use></svg></a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- End Page Image -->
+
+<!-- Page Carousel -->
+{% if page.has-carousel %}
+<div class="grid-x grid-padding-y align-center">
+  <div class="small-12 cell">
+    <div class="carousel__container">
+      <div class="carousel">
+        {% for carouselimage in page.images %}
+        {% assign image = carouselimage.image %}
+          <div class="carousel-image margin-horizontal-1" data-interchange="{% include images/interchange-img-small-12-medium-6-cell.html %}"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- End Page Carousel -->
+
+<!-- Page Content -->
+{% assign content = page.content | strip_newlines %}
+{% unless content == ""  %}
+<section class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 cell">
+      {{ page.content | replace: "/uploads", "https://hotfeet.imgix.net/uploads" | markdownify }}
+    </div>
+  </div>
+</section>
+{% else %}
+{% if page.excerpt %}
+<section class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 large-9 cell text-center">
+      <h1 class="h5">{{page.excerpt}}</h1>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endunless %}
+<!-- End Page Content -->
+
+<!-- Page Quote -->
+{% if page.quotes %}
+{% for quote in page.quotes %}
+<section class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 cell text-center">
+      <h5>"{{quote.text}}"</h5>
+      <h5 class="medium-gray">{{quote.cite}}</h5>
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endif %}
+<!-- End Page Quote -->
+
+<!-- Meta -->
+<div class="grid-container">
+ <div class="grid-x grid-padding-x grid-padding-y align-center">
+  <div class="small-12 medium-10 cell text-center">
+    
+    {% if page.client %}
+    <div>Client</div>
+  	<div class="secondary-color margin-bottom-1">{{ page.client }}</div>
+  	{% endif %}
+  	
+  	{% if page.format %}
+    <div>Format</div>
+    <div class="secondary-color margin-bottom-1">
+    {% for format in page.format %}
+    <div>{{ format }}</div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+  	{% if page.press %}
+  	<div>Press</div>
+    <div class="secondary-color margin-bottom-1">
+    {% for press in page.press %}
+    <div><a href="{{ press.link }}" class="secondary-color">{{ press.publication }}</a></div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+  	{% if page.screenings %}
+  	<div>Screenings</div>
+    <div class="secondary-color margin-bottom-1">
+    {% for screening in page.screenings %}
+    <div>{{ screening }}</div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.awards %}
+  	<div>Awards</div>
+    <div class="secondary-color margin-bottom-1">
+    {% for award in page.awards %}
+    <div>{{ award }}</div>
+    {% endfor %}
+    </div>
+    {% endif %}
+  	
+  </div>
+ </div>
+</div>
+<!-- End Meta -->
+
+<!-- List -->
+
+{% if page.collection == "work" %}
+{% for project in site.work %}{% capture fullurl %}{{ site.baseurl }}{{ project.url }}{% endcapture %}
+{% if fullurl == page.url %}{% assign current_page = fullurl %}{% break %}{% elsif page.url contains fullurl %}{% assign current_page = fullurl %}{% endif %}{% endfor %}
+<section class="works__list light-gray-background">
+<div class="grid-container">
+ <div class="grid-x padding-top-3 padding-bottom-3 align-center">
+  <div class="small-12 medium-10 text-center cell">
+
+  {% for project in site.work %}
+  
+    {% if project.url == current_page %}
+    {% assign current = ' class="active"' %}
+    {% else %}
+    {% assign current = null %}
+    {% endif %}
+      
+    <a{{ current }} href="{{ project.url }}">{{ project.title }}</a>
+
+
+  {% endfor %}
+  </div>
+ </div>
+</div>
+</section>
+{% endif %}
+<!-- End List -->

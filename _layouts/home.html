@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<!-- Home Intro -->
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y padding-vertical-space-1">
+
+    <div class="small-12 medium-10 large-10 xxlarge-9 cell">
+      <h1 class="h2 margin-top-0">{{page.header}}</h1>
+      {% if page.sub-header %}
+      <h2 class="sans-regular medium-gray">{{page.sub-header}}</h2>
+      {% endif %}
+<!--       <div class="padding-top-1"><a href="/about/" class="h3 sans-regular medium-gray">Find out more <svg class="icon icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></a></div> -->
+    </div>
+
+  </div>
+</div>
+<!-- End Home Intro -->
+
+<!-- Home Selected Projects -->
+<div class="grid-container">
+
+  {% if page.selected-text %}
+  <div class="grid-x">
+    <div class="small-12 medium-8 cell">
+      <h3>{{page.selected-text}}</h3>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="grid-x grid-padding-x grid-padding-y small-up-1 medium-up-1">
+    {% assign projects = paginator.posts | where: "is-featured", "true" %}
+    {% for project in projects %}
+     {% include blocks/excerpt.html %}
+    {% endfor %}
+  </div>
+
+</div>
+<!-- End Home Selected Projects -->
+
+
+<!-- Home Projects Link -->
+<div class="grid-container margin-bottom-3">
+  <div class="grid-x grid-padding-x grid-padding-y">
+
+    <div class="small-12 medium-8 cell medium-gray">
+      <a href="/work/" class="h4 sans-regular">View all work <svg class="icon icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></a>
+    </div>
+
+  </div>
+</div>
+<!-- End Home Projects Link -->

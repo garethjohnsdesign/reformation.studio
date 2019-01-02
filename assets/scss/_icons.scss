@@ -1,0 +1,38 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  vertical-align: center;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-logo {
+  width: 4.615234375em;
+  font-size: 2rem;
+}
+
+.icon-arrows {
+  font-size: 2rem;
+}
+
+.icon-clients {
+  font-size: 6rem;
+}
+
+.icon-play_arrow {
+  font-size: 5rem;
+}
+
+.icon-sort {
+  font-size: 2rem;
+}
