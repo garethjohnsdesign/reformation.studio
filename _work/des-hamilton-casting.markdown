@@ -1,13 +1,23 @@
 ---
 title: Des Hamilton Casting
 date: 2016-07-08 13:22:00 Z
+categories:
+- Research and insight
+- Naming
+- Visual Identity
+- Art Direction
+- Signage and wayfinding
+- Exhibition Design
+- Packaging Design
+- Editorial Design
+- Book Design
+- Web Design
+- E-Commerce
 position: 0
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua.
 image: "/uploads/born-and-reared-feature.jpg"
-video: 
 is-featured: true
-is-full-width: true
 images:
 - image: "/uploads/toyota-runner-3.jpg"
   caption: Test
@@ -23,6 +33,7 @@ images:
   caption: 
 - image: "/uploads/toyota-runner-3.jpg"
   caption: 
+is-full-width: true
 quotes:
 - text: This is a sensitive observation of what it was like growing up in the troubles,
     or being a part of them. It captures the regrets and the fears of thoughtful people,
