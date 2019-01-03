@@ -2,9 +2,10 @@
 title: Des Hamilton Casting
 date: 2016-07-08 13:22:00 Z
 position: 0
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua.
 image: "/uploads/born-and-reared-feature.jpg"
-video:
+video: 
 is-featured: true
 is-full-width: true
 images:

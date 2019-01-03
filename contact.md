@@ -14,14 +14,15 @@ details:
 - title: Collaborators
   text: We enjoy some great working relationships with some hugely talented creative
     specialists. We’re always looking to add to our network so to arrange a chat,
-    send an email to [hello@reformation.studio](mailto:hello@reformation.studio) with some examples
-    of your work.
+    send an email to [hello@reformation.studio](mailto:hello@reformation.studio) with
+    some examples of your work.
 - title: Newsletter
-  text: We would like to send you the news about our latest projects and studio culture. If you are interested, please follow the link and add your name on the list.
+  text: We would like to send you the news about our latest projects and studio culture.
+    If you are interested, please follow the link and add your name on the list.
 - title: Colophon
-  text: "This website and the works shown here are Copyright © 2005 – 2017 Atelier Carvalho Bernau. This current version of our website is online since March 2014. Principal photography on this site is by Nadine Stijns. Some photography by us. Built by Atelier Carvalho Bernau, based on Emil Olsson’s Hi-Response.
-
-The typefaces used are Atlas Typewriter (everywhere), designed by Susana and Kai, and Lyon Display (in the Current Affairs section), designed by Kai. Both are available from Commercial Type."
+  text: |-
+    This website and the works shown here are Copyright © 2005 – 2017 Atelier Carvalho Bernau. This current version of our website is online since March 2014. Principal photography on this site is by Nadine Stijns. Some photography by us. Built by Atelier Carvalho Bernau, based on Emil Olsson’s Hi-Response.
+    The typefaces used are Atlas Typewriter (everywhere), designed by Susana and Kai, and Lyon Display (in the Current Affairs section), designed by Kai. Both are available from Commercial Type.
 - title: Full time positions, freelancers and internships
   text: |-
     There are currently no permanent full-time positions available, but we do occasionally use freelancers and sometimes run paid internships.

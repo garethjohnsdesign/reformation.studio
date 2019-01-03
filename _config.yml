@@ -37,7 +37,8 @@ defaults:
     - 
     layout: page
 url: https://www.reformation.studio
-description: Reformation is a London based graphic design studio specializing in visual identities, websites and printed matter.
+description: Reformation is a London based graphic design studio specializing in visual
+  identities, websites and printed matter.
 permalink: pretty
 exclude:
 - bower.json
@@ -66,7 +67,7 @@ highlighter: rouge
 company: Reformation
 company-address: Office 5, Unit R1, Penfold Works, Imperial Way, Watford, WD24 4YY
 email: hello@reformation.studio
-analytics:
+analytics: 
 logo: "/assets/img/logo.svg"
 per_page: 12
 date_format: "%b %Y"
