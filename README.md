@@ -1,6 +1,6 @@
-# Hot Feet
+# Reformation Studio
 
-Site for Hot Feet. Please go to [www.hotfeet.co](https://www.hotfeet.co) in case you want to take a look at the website.
+Site for Reformation Studio. Please go to [www.reformation.studio](http://www.reformation.studio) in case you want to take a look at the website.
 
 * * *
 
