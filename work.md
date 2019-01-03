@@ -10,4 +10,4 @@ pagination:
 layout: work
 ---
 
-Our work takes us across borders and cultural divides to create long and short form content for online platforms, broadcast partners and cinematic release. Here are a selection of projects we are proud of.
+We make websites, identities and campaigns that work. We believe that success comes through research, defined processes and original thinking.
