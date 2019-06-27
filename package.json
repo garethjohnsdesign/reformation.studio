@@ -1,0 +1,21 @@
+{
+  "name": "glowing",
+  "version": "1.0.0",
+  "description": "Package for Glowing Glowing Gone",
+  "author": "Gareth Johns <info@garethjohnsdesign.com>",
+  "bugs": {
+    "email": "info@garethjohnsdesign.com"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "foundation-sites": "^6.5.1",
+    "jquery": ">=3.0.0",
+    "jquery.cookie": "^1.4.1",
+    "lightgallery": "^1.6.12",
+    "motion-ui": "~2.0.0",
+    "smooth-scroll": "^16.0.3",
+    "swiper": "^4.5.0",
+    "what-input": "^5.1.2"
+  },
+  "private": true
+}

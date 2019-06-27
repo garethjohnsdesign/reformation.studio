@@ -1,0 +1,27 @@
+# CRAFT ENVIRONMENT
+.env
+
+# COMPOSER
+/vendor
+
+# CRAFT STORAGE
+/storage/*
+!/storage/.gitkeep
+
+# ASSETS
+/web/cpresources/*
+/web/key/*
+
+
+# BUILD FILES
+/node_modules/*
+/build/*
+/yarn-error.log
+/npm-debug.log
+
+# MISC FILES
+.sass-cache
+.cache
+.DS_Store
+prepros-6.config
+composer.lock

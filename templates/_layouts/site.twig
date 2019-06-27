@@ -1,0 +1,28 @@
+{% extends "_layouts/base" %}
+
+{% block body %}
+
+<!-- Off Canvas Navigation -->
+<div class="off-canvas position-top" id="offCanvasMenu" data-off-canvas data-transition="overlap" data-close-on-click="true" data-auto-focus="false">
+{% include "_includes/off-canvas/menu" %}
+</div>
+<!-- End Off Canvas Navigation -->
+
+<div class="off-canvas-content" id="main" data-off-canvas-content>
+
+<!-- Navigation Primary -->
+{% include "_includes/global/navigation" %}
+<!-- End Navigation Primary -->
+
+{% block main %}
+{% endblock %}
+
+<!-- Footer -->
+{% include "_includes/global/footer" %}
+<!-- End Footer -->
+</div>
+
+{% include "_includes/global/analytics" %}
+{% include "_includes/global/scripts" %}
+
+{% endblock %}

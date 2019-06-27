@@ -1,0 +1,54 @@
+Gareth Johns Design + Development
+
+The team, technology & tools behind this site.
+
+
+GARETH JOHNS DESIGN + DEVELOPMENT TEAM
+--------
+
+Made with love in London. test
+
+Gareth Johns
+Content, design & development
+@garethjohnsabc
+
+
+TECHNOLOGY
+----------
+
+Codekit - File Processor
+codekitapp.com
+
+Craft CMS - Content management system
+craftcms.com
+
+Foundation - Front-end framework
+foundation.zurb.com
+
+Sass - CSS pre-processor
+sass-lang.com
+
+Twig - Templating
+twig.symfony.com
+
+GitHub - Code collaboration & hosting
+github.com
+
+JavaScript libraries include:
+jQuery
+
+
+TOOLS
+-----
+
+Coda - Text editor
+panic.com/coda/
+
+Sketch - Graphics editor
+sketchapp.com
+
+Illustrator & Photoshop - Graphics editor
+adobe.com
+
+Slack - Emojis and GIFs
+slack.com

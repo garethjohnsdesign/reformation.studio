@@ -1,0 +1,32 @@
+<!-- Footer -->
+<footer class="grid-x grid-padding-x grid-padding-y align-justify">
+  
+  <div class="small-12 medium-6 large-shrink cell">
+    <ul class="menu">
+      <li><a data-toggle="offCanvasLegal">© Reformation</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a data-toggle="offCanvasLegal">Legal</a></li>
+      <li><a data-toggle="offCanvasSubscribe">Subscribe</a></li>
+    </ul>
+  </div>
+
+  <div class="small-12 medium-6 large-shrink cell show-for-medium">
+    <ul class="menu show-for-large align-center">
+    {% for block in social.socials.all() %}
+    {% switch block.type %}
+      {% case "facebook" %}
+          <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-socials icon-facebook"><use xlink:href="/img/symbol-defs.svg#icon-facebook"></use></svg></a></li>
+      {% case "instagram" %}
+          <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-socials icon-instagram"><use xlink:href="/img/symbol-defs.svg#icon-instagram"></use></svg></a></li>
+      {% case "twitter" %}
+          <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-socials icon-twitter"><use xlink:href="/img/symbol-defs.svg#icon-twitter"></use></svg></a></li>
+      {% case "youtube" %}
+          <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-socials icon-youtube"><use xlink:href="/img/symbol-defs.svg#icon-youtube"></use></svg></a></li>
+    {% endswitch %}
+    {% endfor %}
+    </ul>
+  </div>
+
+</footer>
+<!-- End Footer -->

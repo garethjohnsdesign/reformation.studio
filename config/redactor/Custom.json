@@ -1,0 +1,18 @@
+{
+  "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link"],
+  "plugins": ["fullscreen"],
+  "linkNewTab": true,
+  "toolbarFixed": true,
+  "formatting": ["h1", "h2", "h3", "h4", "h5", "p"],
+  "formattingAdd": {
+    "green title": {
+      "title": "Green Header 1",
+      "api": "module.block.format",
+      "args": {
+        "tag": "h5",
+        "class": "coriandr-green-text",
+        "type" : "toggle"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{% extends "_layouts/site" %}
+
+{% set title = entry.title %}
+{% set description = entry.description |striptags|slice(0, 120) %}
+
+{% block main %}
+
+<!-- Hero -->
+{% include "_includes/blocks/hero" %}
+<!-- End Hero -->
+
+<!-- Matrix -->
+<article>
+{% include "_includes/blocks/matrix" %}    
+</article>
+<!-- End Matrix -->
+
+{% endblock %}

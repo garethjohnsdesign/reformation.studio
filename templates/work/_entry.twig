@@ -1,0 +1,295 @@
+{% extends "_layouts/site" %}
+
+{% set title = entry.title %}
+{% set description = entry.description |striptags|slice(0, 120) %}
+{% set asset = entry.image.first() %}
+{% set image = craft.imager.transformImage(asset, { width: 1200, height: 630, dpr: 1, position: asset.getFocalPoint() }) %}
+
+
+{% block head_map %}
+<!-- Mapbox -->
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css" rel="stylesheet" />
+{% endblock %}
+
+{% block main %}
+
+<!-- Hero -->
+{% set image = entry.image.first() %}
+<div class="image--explore align-center-middle" data-interchange="{% include "_includes/images/full/full/interchange-img-small-12-medium-12" %}">
+
+<div class="grid-y grid-padding-x height-100 align-right scrollarrow">
+  <div class="shrink cell">
+  
+    <div class="grid-x padding-vertical-2">
+      <div class="small-12 cell text-center white">
+      <a data-scroll href="#page__content"><svg class="icon icon-arrow-down"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow-down"></use></svg></a>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<div class="grid-y height-100 align-center content">
+<div class="shrink cell text-center padding-horizontal-3" style="z-index:3">
+
+  <h1 class="hero white">{{entry.title}}</h1>
+  <div class="white hide-for-large">{{ entry.location.parts.number }} {{ entry.location.parts.address }} {{ entry.location.parts.postcode }}</div>
+
+<a href="tel:{{entry.phone}}" class="white hide-for-large"><svg class="icon icon-phone"><use xlink:href="/assets/icons/symbol-defs.svg#icon-phone"></use></svg> {{ entry.phone }}</a>
+
+
+  <div class="grid-x grid-padding-x padding-top-2 align-center show-for-large white show-for-large">
+    <div class="small-12 medium-4 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose white padding-bottom-1">Address</div>
+        <a href="https://www.google.com/maps/search/?api=1&query={{ entry.location.parts.number }} {{ entry.location.parts.address }} {{ entry.location.parts.postcode }} " target="_blank">{{ entry.location.parts.number }} {{ entry.location.parts.address }} {{ entry.location.parts.postcode }}</a>
+      </div>
+  
+    {% if entry.phone|length or entry.website|length or entry.email|length  %}
+    <div class="small-12 medium-4 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose white padding-bottom-1">Contact</div>
+      {% if entry.phone|length %}<div><a href="tel:{{entry.phone}}"><svg class="icon icon-phone"><use xlink:href="/assets/icons/symbol-defs.svg#icon-phone"></use></svg> {{ entry.phone }}</a></div>{% endif %} 
+      {% if entry.website|length %}<div><a href="{{entry.website}}"><svg class="icon icon-external-link"><use xlink:href="/assets/icons/symbol-defs.svg#icon-external-link"></use></svg> {{ entry.website |replace({'https://': '', 'www.': '', '/': ''})}}</a></div>{% endif %}
+      {% if entry.email|length %}<div><a href="mailto:{{entry.email}}"><svg class="icon icon-mail"><use xlink:href="/assets/icons/symbol-defs.svg#icon-mail"></use></svg> {{ entry.email }}</a></div>{% endif %}
+    </div>
+    {% endif %} 
+    
+    {% if entry.socials|length %}
+    <div class="small-12 medium-4 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose white padding-bottom-1">Socials</div>
+      <ul class="menu align-center">
+      {% for block in entry.socials.all() %}
+      {% switch block.type %}
+      
+        {% case "facebook" %}
+      
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-facebook"><use xlink:href="/assets/icons/symbol-defs.svg#icon-facebook"></use></svg></a></li>
+      
+        {% case "instagram" %}
+        
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-instagram"><use xlink:href="/assets/icons/symbol-defs.svg#icon-instagram"></use></svg></a></li>
+      
+        {% case "twitter" %}
+        
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-twitter"><use xlink:href="/assets/icons/symbol-defs.svg#icon-twitter"></use></svg></a></li>
+      
+        {% case "youtube" %}
+        
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-youtube"><use xlink:href="/assets/icons/symbol-defs.svg#icon-youtube"></use></svg></a></li>
+      
+      {% endswitch %}
+      {% endfor %}
+      </ul>
+    </div>
+    {% endif %} 
+  
+  </div>
+
+
+</div>
+</div>
+
+
+</div>
+<!-- End Hero -->
+
+<!-- About -->
+<div class="grid-container padding-vertical-2" id="page__content">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 cell text-center">
+      <div class="serif-bold text-uppercase letter-spacing--loose black">About {{entry.title}}</div>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 cell text-center">
+    <h6 class="sans-regular dark-gray">{{entry.description}}</h6>
+    </div>
+  </div>
+</div>
+<!-- End About -->
+
+<!-- Details -->
+<div class="grid-container">
+
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 cell text-center">
+      <div class="serif-bold text-uppercase letter-spacing--loose black">Details</div>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x grid-padding-y"> 
+    <div class="small-12 medium-6 cell">
+    <div class="small sans-bold text-uppercase letter-spacing--loose black padding-bottom-1">Opening Hours</div>
+
+    {% for day in entry.openingHours %}
+      <div class="grid-x grid-padding-x align-justify">
+        <div class="small-6 cell">
+        {{ day.name }}
+        </div>
+        <div class="shrink cell">
+        {% if day.isBlank %}Closed{% else %}{{ day.open|time('short') }} - {{ day.close|time('short')}}{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+
+    {% if entry.specialOpeningHours|length %}
+      <div class="padding-vertical-1">
+        {{ entry.specialOpeningHours }}
+      </div>
+    {% endif %}
+
+    <div class="padding-vertical-1">
+      {% for block in entry.booking.all() %}
+      {% switch block.type %}
+      
+        {% case "room" %}
+
+            <a href="{{block.bookingLink}}" target="_blank" class="expanded button hollow">Request a room</a>
+      
+        {% case "appointment" %}
+        
+            <a href="{{block.bookingLink}}" target="_blank" class="expanded button hollow">Request an appointment</a>
+      
+        {% case "table" %}
+        
+            <a href="{{block.bookingLink}}" target="_blank" class="expanded button hollow">Request a table</a>
+      
+      {% endswitch %}
+      {% endfor %}
+    </div>
+
+    </div>
+
+    <div class="small-12 medium-6 cell">
+      <div id="map" style="width: 100%; height: 300px;"></div>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-4 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose black padding-bottom-1">Address</div>
+        <a href="https://www.google.com/maps/search/?api=1&query={{ entry.location.parts.number }} {{ entry.location.parts.address }} {{ entry.location.parts.postcode }} " target="_blank">{{ entry.location.parts.number }} {{ entry.location.parts.address }} {{ entry.location.parts.postcode }}</a>
+      </div>
+
+      {% if entry.phone|length or entry.website|length or entry.email|length  %}
+      <div class="small-12 medium-4 cell text-center">
+        <div class="small sans-bold text-uppercase letter-spacing--loose black padding-bottom-1">Contact</div>
+        {% if entry.phone|length %}<div><a href="tel:{{entry.phone}}"><svg class="icon icon-phone"><use xlink:href="/assets/icons/symbol-defs.svg#icon-phone"></use></svg> {{ entry.phone }}</a></div>{% endif %} 
+        {% if entry.website|length %}<div><a href="{{entry.website}}"><svg class="icon icon-external-link"><use xlink:href="/assets/icons/symbol-defs.svg#icon-external-link"></use></svg> {{ entry.website |replace({'https://': '', 'www.': '', '/': ''})}}</a></div>{% endif %}
+        {% if entry.email|length %}<div><a href="mailto:{{entry.email}}"><svg class="icon icon-mail"><use xlink:href="/assets/icons/symbol-defs.svg#icon-mail"></use></svg> {{ entry.email }}</a></div>{% endif %}
+      </div>
+      {% endif %} 
+    
+    {% if entry.socials|length %}
+    <div class="small-12 medium-4 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose black padding-bottom-1">Socials</div>
+      <ul class="menu align-center">
+      {% for block in entry.socials.all() %}
+      {% switch block.type %}
+      
+        {% case "facebook" %}
+      
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-facebook"><use xlink:href="/assets/icons/symbol-defs.svg#icon-facebook"></use></svg></a></li>
+      
+        {% case "instagram" %}
+        
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-instagram"><use xlink:href="/assets/icons/symbol-defs.svg#icon-instagram"></use></svg></a></li>
+      
+        {% case "twitter" %}
+        
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-twitter"><use xlink:href="/assets/icons/symbol-defs.svg#icon-twitter"></use></svg></a></li>
+      
+        {% case "youtube" %}
+        
+            <li><a href="{{block.socialLink}}" target="_blank"><svg class="icon icon-youtube"><use xlink:href="/assets/icons/symbol-defs.svg#icon-youtube"></use></svg></a></li>
+      
+      {% endswitch %}
+      {% endfor %}
+      </ul>
+    </div>
+    {% endif %} 
+
+  </div>
+
+</div>
+<!-- End Details -->
+
+<!-- Payment Methods -->
+{% if entry.payment|length %}
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 large-8 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose black">Payment Methods</div>
+        <ul class="menu align-center padding-vertical-1">
+          {% for type in entry.payment %}
+          <li class="menu-text"><svg class="icon icon-payment icon-{{ type.value }}"><use xlink:href="/assets/icons/symbol-defs.svg#icon-{{ type.value }}"></use></svg></a></li>
+          {% endfor %}
+        </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- End Services -->
+
+<!-- Services -->
+{% if entry.services|length %}
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+    <div class="small-12 medium-10 large-8 cell text-center">
+      <div class="small sans-bold text-uppercase letter-spacing--loose black">Services</div>
+        <ul class="menu align-center padding-vertical-1">
+          {% for row in entry.services %}
+            <li class="menu-text">{{ row.service }}</li>
+          {% endfor %}
+        </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- End Services -->
+
+<!-- Carousel -->
+{% if entry.carousel|length %}
+<div class="grid-x grid-padding-y align-center">
+  <div class="small-12 cell text-center">
+    {% include "_includes/blocks/carousel" %}
+  </div>
+</div>
+{% endif %}
+<!-- End Carousel -->
+
+<!-- Recent Articles -->
+{% set tag = entry.brand %}
+
+{% set entries = craft
+.entries
+.section('articles')
+.relatedTo(tag)
+.all() %}
+
+{% if entries|length %}
+
+<div class="grid-x grid-padding-x grid-padding-y margin-top-2">
+  <div class="small-12 cell text-center">
+    <div class="section-header">Related Articles</div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y small-up-1 medium-up-3 large-up-3">
+    {% for entry in entries %}
+      {% include "_includes/blocks/article" %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+<!-- End Recent Articles -->
+
+{% minify js %}
+{% js %}
+{% include "_includes/scripts/map--explore" %}
+{% endjs %}
+{% endminify %}
+
+{% endblock %}

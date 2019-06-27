@@ -1,0 +1,206 @@
+//  Table of Contents:
+//
+//   1. Mixins
+//   2. Global
+//   3. Animations
+//   4. Color
+//   5. Typography
+//   6. Layout
+
+
+// 1. Mixins
+// ---------
+
+@mixin links ($link, $hover) {
+  a {
+    color: $link;
+    &:hover {
+      color: $hover;   
+    }
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+ .content {
+    transition: $primary-transition;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+  }
+ .background {
+    transition: $primary-transition;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+// 2. Global
+// ---------
+
+a {
+  transition: color .35s cubic-bezier(.39, .575, .565, 1);
+}
+
+
+body {
+  cursor: default;
+  font-kerning: normal;
+  margin: 0
+}
+
+svg {
+  max-width: 100%;
+}
+
+::selection {
+  background: $primary-color;
+  color: $black;
+}
+
+:focus {
+  outline: 0;
+}
+
+// 3. Animations
+// -------------
+
+// 4. Color
+// --------
+
+.primary-color {
+  color: get-color(primary);
+}
+
+.secondary-color {
+  color: get-color(secondary);
+}
+
+// 5. Typography
+// -------------
+
+.small {
+font-size: $small-font-size;
+}
+
+.underline {
+  border-bottom: 1px solid $white;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+i, cite, em, var, address, dfn {
+  font-style: normal;
+}
+
+p a {
+  border-bottom: 1px solid $black;
+}
+
+/*
+.sans-light {
+  font-family: $sans-light;
+}
+*/
+
+.sans-regular {
+  font-family: $sans-regular;
+}
+
+.sans-bold {
+  font-family: $sans-bold;
+}
+
+// 6. Layout
+// ---------
+
+.image--hero {
+  height: 80vh;
+  background-size: cover; 
+  background-position: 50%;
+  position: relative;
+ .content {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  }
+}
+
+
+// 6. Navigation
+// -------------
+
+.sticky-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+// 6. Images
+// ---------
+
+.image--portrait {
+  @include breakpoint(small) {
+  @include aspect-ratio (5, 7);
+  }
+  @include breakpoint(medium) {
+  @include aspect-ratio (5, 7);
+  }
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--square {
+  @include breakpoint(small) {
+  @include aspect-ratio (1, 1);
+  }
+  @include breakpoint(medium) {
+  @include aspect-ratio (1, 1);
+  }
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--default {
+  @include aspect-ratio (1.66, 1);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--panorama {
+  @include breakpoint(small) {
+  @include aspect-ratio (7, 5);
+  }
+  @include breakpoint(medium) {
+  @include aspect-ratio (16, 9);
+  }
+  @include breakpoint(large) {
+  @include aspect-ratio (2.35, 1);
+  }
+  background-size: cover; 
+  background-position: 50%;
+}
