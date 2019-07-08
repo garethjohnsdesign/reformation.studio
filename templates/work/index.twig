@@ -1,7 +1,40 @@
 {% extends "_layouts/site" %}
 
+{% block navigation %}
+{% include "_includes/global/navigation--relative" %}
+{% endblock %}
+
 {% block main %}
+<div class="grid-x grid-padding-x small-up-1 medium-up-2">
+      
+    {% set projectentries = craft.entries
+    .section('work')
+    .limit(9)
+    .all() %}
+    
+    {% for entry in projectentries %}
+    <div class="cell">
+      <div class="excerpt">
+        <a href="{{ entry.url}}">
+          
+          <div class="excerpt__image">
+            {% for image in entry.image %}
+            <div class="image--default" data-interchange="{% include "_includes/images/full/16-9/interchange-img-small-12-medium-12" %}">
+              <div class="content"></div>
+            </div>
+            {% endfor %}
+          </div>
 
-Test
-
+          <div class="grid-x grid-padding-x align-middle">
+            <div class="small-12 cell text-center padding-1">
+              <h5>{{ entry.title}}</h5>
+            </div>
+          </div>
+        
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+    
+</div>
 {% endblock %}

@@ -1,7 +1,65 @@
 {% extends "_layouts/site" %}
 
+{% block navigation %}
+{% include "_includes/global/navigation--absolute" %}
+{% endblock %}
+
 {% block main %}
 
-Test
+<!-- Headliners - Desktop -->
 
+<div class="test">
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide">
+
+      <div class="site__description">
+        <div class="content">
+          <div class="grid-x grid-padding-x grid-padding-y">
+            <div class="small-12 cell">
+              <h4>Reformation is a design and technology studio.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {% set projectentries = craft.entries
+    .section('work')
+    .limit(9)
+    .all() %}
+
+    {% for entry in projectentries %}
+    <div class="swiper-slide">
+      {% for image in entry.image %}
+      <div class="image--hero" data-interchange="{% include "_includes/images/full/16-9/interchange-img-small-12-medium-12" %}">
+
+        <div class="content">
+          <div class="grid-x grid-padding-x grid-padding-y">
+            <div class="small-12 cell">
+            {{entry.title}}
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="swiper-pagination">
+    <div class="grid-x grid-padding-x grid-padding-y">
+      <div class="small-12 cell swiper-pagination-numbers text-right">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+<!-- End Headliners - Desktop -->
 {% endblock %}

@@ -133,21 +133,6 @@ p a {
 // 6. Layout
 // ---------
 
-.image--hero {
-  height: 80vh;
-  background-size: cover; 
-  background-position: 50%;
-  position: relative;
- .content {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  }
-}
-
 
 // 6. Navigation
 // -------------
@@ -203,4 +188,100 @@ p a {
   }
   background-size: cover; 
   background-position: 50%;
+}
+
+.off-canvas-menu {
+  @include links ($dark-gray, $medium-gray);
+}
+
+
+.navigation {
+  @include links ($white, $primary-color);
+}
+
+.navigation--expanded {
+  @include links ($black, $medium-gray);
+}
+
+.navigation--relative {
+  z-index: 15;
+}
+
+.navigation--absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+}
+
+.test {
+  position: relative;
+  height: 100vh;
+}
+
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-pagination {
+  @include links ($secondary-color, $primary-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  @include links ($white, $primary-color);
+  z-index: 2;
+}
+
+
+.site__description {
+ .content {
+    transition: $primary-transition;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.image--hero {
+  height: 100vh;
+  background-size: cover; 
+  background-position: 50%;
+ .content {
+    transition: $primary-transition;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.content {
+  opacity: 0;
+  transition: $primary-transition;
+}
+
+.swiper-slide-active {
+  z-index: 1000;
+  .content {
+    transition: $primary-transition;
+    transition-delay: 1.0s;
+    opacity: 1
+  }
 }
