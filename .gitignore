@@ -24,4 +24,3 @@
 .cache
 .DS_Store
 prepros-6.config
-composer.lock
