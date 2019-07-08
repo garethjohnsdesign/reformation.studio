@@ -1,12 +1,12 @@
 Reformation Studio
 
-The team, technology & tools behind this site.
+The team, technology and tools behind this site.
 
 
 REFORMATION STUDIO TEAM
 --------
 
-Made with love in London. test
+Made with love in London.
 
 Gareth Johns
 Content, design & development
