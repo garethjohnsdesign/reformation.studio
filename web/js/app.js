@@ -66,8 +66,7 @@ $(function() {
       direction: 'vertical',
       slidesPerView: 'auto',
       centeredSlides: true,
-//       initialSlide: firstSlide,
-      initialSlide: 0,
+      initialSlide: firstSlide,
       loop: true,
       simulateTouch: true,
       mousewheel: true,
@@ -88,12 +87,10 @@ $(function() {
         onlyInViewport: false,
       },
 
-/*
   pagination: {
       el: ".swiper-pagination-numbers",
       type: "fraction"
   },
-*/
 
     navigation: {
       nextEl: '.swiper-slide',

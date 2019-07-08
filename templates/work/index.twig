@@ -5,36 +5,36 @@
 {% endblock %}
 
 {% block main %}
-<div class="grid-x grid-padding-x small-up-1 medium-up-2">
-      
-    {% set projectentries = craft.entries
-    .section('work')
-    .limit(9)
-    .all() %}
-    
-    {% for entry in projectentries %}
-    <div class="cell">
-      <div class="excerpt">
-        <a href="{{ entry.url}}">
-          
-          <div class="excerpt__image">
-            {% for image in entry.image %}
-            <div class="image--default" data-interchange="{% include "_includes/images/full/16-9/interchange-img-small-12-medium-12" %}">
-              <div class="content"></div>
-            </div>
-            {% endfor %}
-          </div>
-
-          <div class="grid-x grid-padding-x align-middle">
-            <div class="small-12 cell text-center padding-1">
-              <h5>{{ entry.title}}</h5>
-            </div>
-          </div>
+  <div class="grid-x grid-padding-x small-up-1 medium-up-2 large-up-3">
         
-        </a>
+      {% set projectentries = craft.entries
+      .section('work')
+      .limit(9)
+      .all() %}
+      
+      {% for entry in projectentries %}
+      <div class="cell">
+        <div class="excerpt">
+          <a href="{{ entry.url}}">
+            
+            <div class="excerpt__image">
+              {% for image in entry.image.all() %}
+              <div class="image--default" data-interchange="{% include "_includes/images/full/16-9/interchange-img-small-12-medium-12" %}">
+                <div class="content"></div>
+              </div>
+              {% endfor %}
+            </div>
+  
+            <div class="grid-x grid-padding-x align-middle">
+              <div class="small-12 cell text-center padding-1">
+                <h5>{{ entry.title}}</h5>
+              </div>
+            </div>
+          
+          </a>
+        </div>
       </div>
-    </div>
-    {% endfor %}
-    
-</div>
+      {% endfor %}
+      
+  </div>
 {% endblock %}

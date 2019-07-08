@@ -3,16 +3,21 @@
 {% set title = entry.title %}
 {% set description = entry.description |striptags|slice(0, 120) %}
 
+{% block navigation %}
+{% include "_includes/global/navigation--relative" %}
+{% endblock %}
+
 {% block main %}
-
-<!-- Hero -->
-{% include "_includes/blocks/hero" %}
-<!-- End Hero -->
-
-<!-- Matrix -->
-<article>
-{% include "_includes/blocks/matrix" %}    
-</article>
-<!-- End Matrix -->
-
+<!-- Details -->
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center">
+      {% for block in entry.details.all() %}
+      <div class="small-12 medium-8 cell padding-bottom-1 text-center">
+        <h3>{{ block.header }}</h3>
+        {{ block.text | markdown }}
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<!-- End Details -->
 {% endblock %}

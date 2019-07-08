@@ -3,12 +3,12 @@
 {% block body %}
 
 <!-- Off Canvas Navigation -->
-<div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas data-transition="overlap" data-close-on-click="true" data-auto-focus="false">
+<div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas data-transition="overlap" data-close-on-click="false" data-auto-focus="false">
 {% include "_includes/off-canvas/menu" %}
 </div>
 <!-- End Off Canvas Navigation -->
 
-<div class="off-canvas-content" id="main" data-off-canvas-content>
+<div class="off-canvas-content data-off-canvas-content">
 
 {% block navigation %}
 {% endblock %}
