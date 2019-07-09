@@ -63,11 +63,9 @@ $(function() {
     //initialize swiper when document ready
     var mySwiper = new Swiper ('.swiper-container', {
 
-      direction: 'vertical',
-      slidesPerView: 'auto',
-      centeredSlides: true,
+      direction: 'horizontal',
       initialSlide: firstSlide,
-      loop: true,
+      loop: false,
       simulateTouch: true,
       mousewheel: true,
       mousewheel: {
