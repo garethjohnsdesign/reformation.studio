@@ -1,20 +1,38 @@
+{% set bodyClass = 'home' %}
+
 {% extends "_layouts/site" %}
 
 {% block navigation %}
-{% include "_includes/global/navigation--relative" %}
+{% include "_includes/global/navigation" %}
 {% endblock %}
 
 {% block main %}
 
 
+<!-- Home Hero -->
+<section class="grid-y align-center black-background hero">
+
+
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x grid-padding-y padding-vertical-space-1 align-center">
+  
+      <div class="small-12 medium-10 large-10 xxlarge-9 cell white text-center" data-aos="fade-in">
+        {% if entry.header %}<h1>{{entry.header|striptags|raw}}</h1>{% endif %}
+      </div>
+  
+    </div>
+  </div>
+
+
+</section>
+<!-- End Home Hero -->
 
 <!-- Home Intro -->
 <div class="grid-container">
-  <div class="grid-x grid-padding-x grid-padding-y padding-vertical-space-1">
+  <div class="grid-x grid-padding-x grid-padding-y padding-vertical-space-1 align-center">
 
-    <div class="small-12 medium-10 large-10 xxlarge-9 cell">
-      <h1 class="h2 margin-top-0">This is the header</h1>
-      <h2 class="sans-regular medium-gray">This is a subheader</h2>
+    <div class="small-12 medium-10 large-10 xxlarge-9 cell text-center">
+      {% if entry.subheader %}<h2 class="sans-regular medium-gray">{{entry.subheader|striptags|raw}}</h2>{% endif %}
     </div>
 
   </div>
@@ -25,11 +43,13 @@
 <div class="grid-container">
 
 
+{#
   <div class="grid-x">
     <div class="small-12 medium-8 cell">
-      <h3>Selected Work</h3>
+      <h3>Select Work</h3>
     </div>
   </div>
+#}
 
 
   <div class="grid-x grid-padding-x grid-padding-y small-up-1 medium-up-1">
@@ -52,8 +72,9 @@
             </div>
   
             <div class="grid-x grid-padding-x align-middle">
-              <div class="small-12 cell text-center padding-1">
-                <h5>{{ entry.title}}</h5>
+              <div class="small-12 cell padding-1">
+                <h4 class="medium-gray">{{ entry.title}}</h4>
+                {% if entry.excerpt %}<h4>{{ entry.excerpt}}</h4>{% endif %}
               </div>
             </div>
           
@@ -69,14 +90,19 @@
 
 <!-- Home Projects Link -->
 <div class="grid-container margin-bottom-3">
-  <div class="grid-x grid-padding-x grid-padding-y">
+  <div class="grid-x grid-padding-x grid-padding-y padding-vertical-space-1 align-center">
 
-    <div class="small-12 medium-8 cell medium-gray">
-      <a href="/work/" class="h4 sans-regular">View all work <svg class="icon icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></a>
+    <div class="small-12 medium-8 cell medium-gray text-center">
+      <a href="/work/" class="h4 sans-regular">View all projects <svg class="icon icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></a>
     </div>
 
   </div>
 </div>
 <!-- End Home Projects Link -->
 
+{% endblock %}
+
+{% block footer %}
+{% include "_includes/global/call-to-action" %}
+{% include "_includes/global/footer" %}
 {% endblock %}

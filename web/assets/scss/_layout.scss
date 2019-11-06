@@ -85,12 +85,47 @@ svg {
 // 4. Color
 // --------
 
+.white {
+  color: $white;
+}
+
+.medium-gray {
+  color: $medium-gray;
+  @include links ($medium-gray, $black);
+}
+
+.light-gray {
+  color: $light-gray;
+}
+
+.dark-gray {
+  color: $dark-gray;
+  @include links ($dark-gray, $black);
+}
+
 .primary-color {
   color: get-color(primary);
 }
 
 .secondary-color {
   color: get-color(secondary);
+}
+
+.light-gray-background {
+  background-color: $light-gray;
+}
+
+.medium-gray-background {
+  background-color: $medium-gray;
+}
+
+.dark-gray-background {
+  background-color: $dark-gray;
+}
+
+.black-background {
+  background-color: $black;
+  @include links ($dark-gray, $medium-gray);
 }
 
 // 5. Typography
@@ -200,14 +235,72 @@ ul {
   z-index: 15;
 }
 
-.navigation--absolute {
+.home .navigation {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 15;
+  @include links ($white, $medium-gray);
 }
 
 .logo {
 z-index: 15;
+}
+
+.hero {
+  height: 100vh;
+}
+
+
+
+.padding-vertical-space-1 {
+  @include breakpoint(small) {
+    @include padding(1, null, 1, null);
+  }
+  @include breakpoint(medium) {
+    @include padding(2, null, 2, null);
+  }
+  @include breakpoint(large) {
+    @include padding(2, null, 2, null);
+  }
+}
+
+.padding-space-1 {
+  @include breakpoint(small) {
+    @include padding(1, 1, 1, 1);
+  }
+  @include breakpoint(medium) {
+    @include padding(3, 3, 3, 3);
+  }
+  @include breakpoint(large) {
+    @include padding(5, 5, 5, 5);
+  }
+}
+
+.navigation {
+  @include breakpoint(small) {
+    @include padding(1, 1, 1, 1);
+  }
+  @include breakpoint(medium) {
+    @include padding(1, 1, null, 1);
+  }
+  @include breakpoint(large) {
+    @include padding(1, 3, null, 3);
+  }
+  @include breakpoint(xxlarge) {
+    @include padding(2, 4, null, 4);
+  }
+}
+
+.footer {
+  @include breakpoint(small) {
+    @include padding(1, 1, 1, 1);
+  }
+  @include breakpoint(medium) {
+    @include padding(1, 1, 1, 1);
+  }
+  @include breakpoint(xxlarge) {
+    @include padding(2, 4, null, 4);
+  }
 }

@@ -1,2 +1,4 @@
-<script src="/js/min/app-min.js"></script>
-<script src="/js/min/svgxuse-min.js"></script>
+{% block javascript %}
+<script defer src="/assets/js/min/app-min.{{staticAssetsVersion}}.js"></script>
+<script defer src="/assets/js/min/svgxuse-min.js"></script>
+{% endblock %}
