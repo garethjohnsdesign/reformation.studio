@@ -1,51 +1,82 @@
 {% extends "_layouts/site" %}
 
 {% block navigation %}
-{% include "_includes/global/navigation--absolute" %}
+{% include "_includes/global/navigation--relative" %}
 {% endblock %}
 
 {% block main %}
 
-<!-- Works - Desktop -->
 
-<div class="test">
-<div class="swiper-container">
-  <div class="swiper-wrapper">
 
-    {% set projectentries = craft.entries
-    .section('work')
-    .featured(true)
-    .all() %}
+<!-- Home Intro -->
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y padding-vertical-space-1">
 
-    {% for entry in projectentries %}
-    <div class="swiper-slide">
-      {% for image in entry.image.all() %}
-      <div class="image--hero" data-interchange="{% include "_includes/images/full/16-9/interchange-img-small-12-medium-12" %}">
+    <div class="small-12 medium-10 large-10 xxlarge-9 cell">
+      <h1 class="h2 margin-top-0">This is the header</h1>
+      <h2 class="sans-regular medium-gray">This is a subheader</h2>
+    </div>
 
-        <div class="content">
-          <div class="grid-x grid-padding-x grid-padding-y">
-            <div class="small-12 cell">
-            {{entry.title}}
+  </div>
+</div>
+<!-- End Home Intro -->
+
+<!-- Home Selected Projects -->
+<div class="grid-container">
+
+
+  <div class="grid-x">
+    <div class="small-12 medium-8 cell">
+      <h3>Selected Work</h3>
+    </div>
+  </div>
+
+
+  <div class="grid-x grid-padding-x grid-padding-y small-up-1 medium-up-1">
+  {% set projectentries = craft.entries
+      .section('work')
+      .limit(4)
+      .all() %}
+      
+      {% for entry in projectentries %}
+      <div class="small-12 cell">
+        <div class="excerpt">
+          <a href="{{ entry.url}}">
+            
+            <div class="excerpt__image">
+              {% for image in entry.image.all() %}
+              <div class="image--default" data-interchange="{% include "_includes/images/full/16-9/interchange-img-small-12-medium-12" %}">
+                <div class="content"></div>
+              </div>
+              {% endfor %}
             </div>
-          </div>
+  
+            <div class="grid-x grid-padding-x align-middle">
+              <div class="small-12 cell text-center padding-1">
+                <h5>{{ entry.title}}</h5>
+              </div>
+            </div>
+          
+          </a>
         </div>
-
-
       </div>
       {% endfor %}
-    </div>
-    {% endfor %}
   </div>
 
-  <div class="swiper-pagination">
-    <div class="grid-x grid-padding-x grid-padding-y">
-      <div class="small-12 cell swiper-pagination-numbers text-right">
-      </div>
+</div>
+<!-- End Home Selected Projects -->
+
+
+<!-- Home Projects Link -->
+<div class="grid-container margin-bottom-3">
+  <div class="grid-x grid-padding-x grid-padding-y">
+
+    <div class="small-12 medium-8 cell medium-gray">
+      <a href="/work/" class="h4 sans-regular">View all work <svg class="icon icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></a>
     </div>
+
   </div>
-
-
 </div>
-</div>
-<!-- End Works - Desktop -->
+<!-- End Home Projects Link -->
+
 {% endblock %}

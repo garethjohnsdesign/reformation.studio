@@ -4,8 +4,6 @@
  *
  * All of your system's general configuration settings go in here. You can see a
  * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
- *
- * @see craft\config\GeneralConfig.
  */
 
 return [
@@ -17,13 +15,11 @@ return [
         // Enable CSRF Protection (recommended)
         'enableCsrfProtection' => true,
 
-        // Whether generated URLs should omit "index.php"
+        // Whether "index.php" should be visible in URLs
         'omitScriptNameInUrls' => true,
 
         // Control Panel trigger word
         'cpTrigger' => 'admin',
-
-        'smallbreakpoint' => '1400',
 
         'breakpoints' => [
                 'small' => '640',
@@ -43,29 +39,44 @@ return [
 
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => getenv('SECURITY_KEY'),
+        
+        'enableTemplateCaching' => false,
+        
+        'siteUrl'             => getenv('SITE_URL') ?: '@web',
+
+        // Set the environmental variables
+        'staticAssetsVersion' => '5',
+        
     ],
 
-    // Dev environment settings
+    // Development environment settings
     'dev' => [
-        // Base site URL
-        'siteUrl' => null,
-//         'siteUrl' => getenv('SITE_URL') ?: '/',
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
+        'allowUpdates' => true,
+        'enableTemplateCaching' => false,
+        // Set the environmental variables
+        'staticAssetsVersion' => time(),
     ],
 
     // Staging environment settings
     'staging' => [
-        // Base site URL
-        'siteUrl' => null,
-//         'siteUrl' => getenv('SITE_URL') ?: '/',
+
+        'devMode' => false,
+        'enableTemplateCaching' => true,
+        'allowUpdates' => false,
+        // Set the environmental variables
+        'staticAssetsVersion' => time(),
     ],
 
     // Production environment settings
     'production' => [
-        // Base site URL
-//         'siteUrl' => null,
-        'siteUrl' => getenv('SITE_URL') ?: '/',
+
+        'devMode' => false,
+        'enableTemplateCaching' => true,
+        'allowUpdates' => false,
     ],
+    
+
 ];
