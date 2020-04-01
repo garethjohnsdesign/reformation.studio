@@ -9,6 +9,7 @@
 return [
     // Global settings
     '*' => [
+
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
         'defaultWeekStartDay' => 0,
 
@@ -41,16 +42,17 @@ return [
         'securityKey' => getenv('SECURITY_KEY'),
         
         'enableTemplateCaching' => false,
-        
-        'siteUrl'             => getenv('SITE_URL') ?: '@web',
 
         // Set the environmental variables
-        'staticAssetsVersion' => '5',
+        'staticAssetsVersion' => 2,
         
     ],
 
     // Development environment settings
     'dev' => [
+       'siteUrl' => [
+          'default' => 'https://reformation.test',
+        ],
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
@@ -63,15 +65,24 @@ return [
     // Staging environment settings
     'staging' => [
 
-        'devMode' => false,
-        'enableTemplateCaching' => true,
-        'allowUpdates' => false,
+        'siteUrl' => [
+            'default' => 'https://reformation.frb.io',
+        ],
+
+
+        'devMode' => true,
+        'enableTemplateCaching' => false,
+        'allowUpdates' => true,
         // Set the environmental variables
-        'staticAssetsVersion' => time(),
+         'staticAssetsVersion' => time(),
     ],
 
     // Production environment settings
     'production' => [
+
+        'siteUrl' => [
+            'default' => 'https://reformation.studio',
+        ],
 
         'devMode' => false,
         'enableTemplateCaching' => true,
@@ -80,3 +91,6 @@ return [
     
 
 ];
+
+
+

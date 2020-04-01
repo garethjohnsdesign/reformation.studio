@@ -17,6 +17,8 @@
 
 @import 'fonts';
 
+@import 'variables';
+
 
 // 2. Typography
 // -------------
@@ -49,13 +51,13 @@
 @include foundation-xy-grid-classes;
 @include foundation-typography;
 @include foundation-button;
-@include foundation-forms;
+// @include foundation-forms;
 // @include foundation-range-input;
 // @include foundation-accordion;
 // @include foundation-accordion-menu;
 // @include foundation-badge;
 // @include foundation-breadcrumbs;
-@include foundation-button-group;
+// @include foundation-button-group;
 // @include foundation-callout;
 // @include foundation-card;
 @include foundation-close-button;
@@ -64,18 +66,18 @@
 // @include foundation-drilldown-menu;
 // @include foundation-dropdown;
 // @include foundation-dropdown-menu;
-// @include foundation-responsive-embed;
-@include foundation-label;
+@include foundation-responsive-embed;
+// @include foundation-label;
 // @include foundation-media-object;
-@include foundation-off-canvas;
-@include foundation-orbit;
+// @include foundation-off-canvas;
+// @include foundation-orbit;
 // @include foundation-pagination;
 // @include foundation-progress-bar;
 // @include foundation-progress-element;
 // @include foundation-progress-element;
 // @include foundation-meter-element;
 // @include foundation-slider;
-@include foundation-sticky;
+// @include foundation-sticky;
 @include foundation-reveal;
 // @include foundation-switch;
 // @include foundation-table;
@@ -96,16 +98,15 @@
 // 6. Hamburgers
 // -------
 
-// @import 'hamburgers/hamburgers';
 
-// 7. Swiper
-// ---------
-
-@import 'swiper';
+@import 'hamburgers';
+@import "./delicious-hamburgers/scss/hamburgers";
 
 
-// 8. Layout
+// 7. Layout
 // ---------
 
 @import 'icons';
+@import 'plyr';
+@import 'tippy';
 @import 'layout';

@@ -1,0 +1,55 @@
+{% set bodyClass = 'about' %}
+
+{% if entry.seoTitle | length %}
+{% set seoTitle = entry.seoTitle %}
+{% else %}
+{% set seoTitle = entry.title %}
+{% endif %}
+
+{% if entry.seoDescription | length %}
+{% set seoDescription = entry.seoDescription %}
+{% endif %}
+
+{% set allProjects = craft.entries
+.section('projects')
+.orderBy('postDate desc')
+.limit(null)
+.all() %}
+
+{% extends "_layouts/site" %}
+
+{% block navigation %}
+{% include "_includes/global/navigation" %}
+{% endblock %}
+
+{% block main %}
+<div class="grid-container">
+  <div class="grid-x grid-padding-x grid-padding-y align-center align-middle">
+    <div class="small-12 cell text-center">
+      {{entry.copy}}
+    </div>
+  </div>
+</div>
+
+{# Services #}
+<div class="grid-x grid-padding-x grid-padding-y align-center">
+  
+  <div class="small-12 medium-9 cell">
+    <div class="grid-x grid-padding-x medium-up-3">
+      {% set services = craft.categories.group('disciplines').orderBy('title asc') %}
+      {% for service in services.all() %}
+      <div class="cell margin-bottom-1 sans-bold text-uppercase">
+      {{service.title}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{# End Services #}
+
+{% endblock %}
+
+{% block footer %}
+{% include "_includes/global/footer" %}
+{% endblock %}

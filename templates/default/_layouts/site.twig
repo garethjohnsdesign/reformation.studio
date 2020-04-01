@@ -1,0 +1,24 @@
+{% extends "default/_layouts/base" %}
+
+{% block body %}
+
+<div class="shrink cell" id="swup-navigation">
+{% block navigation %}
+{% endblock %}
+</div>
+
+<div class="shrink cell swup-transition-fade" id="swup-body">
+{% block main %}
+{% endblock %}
+</div>
+
+<div class="shrink cell" id="swup-footer">
+{% block footer %}
+{% endblock %}
+</div>
+
+<!-- Navigation -->
+{% include "_includes/reveal/navigation" %}
+<!-- End Navigation -->
+
+{% endblock %}

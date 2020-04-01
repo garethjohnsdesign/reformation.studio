@@ -1,0 +1,17 @@
+<nav class="full reveal tertiary-background-color" id="overlayNavigation" data-reveal data-animation-in="fade-in" data-animation-out="fade-out">
+  <div class="grid-x grid-padding-x grid-padding-y align-center-middle" style="height: 100%">
+    <div class="shrink cell text-center">
+
+      <ul class="vertical menu text-uppercase sans-bold h4">
+        {% if env == 'dev' %}
+        <li><a href="/" data-toggle="overlayNavigation">Home</a></li>
+        {% endif %}
+        <li><a href="/work" data-toggle="overlayNavigation">Work</a></li>
+        <li><a href="/notes" data-toggle="overlayNavigation">Notes</a></li>
+        <li><a href="/about" data-toggle="overlayNavigation">About</a></li>
+        <li><a href="/contact" data-toggle="overlayNavigation">Contact</a></li>
+      </ul>
+  
+    </div>
+  </div>
+</nav>

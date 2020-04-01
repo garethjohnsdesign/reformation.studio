@@ -20,6 +20,7 @@
   }
 }
 
+
 @mixin aspect-ratio($width, $height) {
   position: relative;
   &:before {
@@ -30,7 +31,7 @@
   }
  .content {
     transition: $primary-transition;
-    z-index: 2;
+    z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -39,31 +40,31 @@
     height: 100%;
     width: 100%;
   }
- .background {
-    transition: $primary-transition;
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-  }
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie);
 }
 
 // 2. Global
 // ---------
 
+.viewheight {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
 a {
   transition: color .35s cubic-bezier(.39, .575, .565, 1);
 }
 
-
 body {
   cursor: default;
-  font-kerning: normal;
-  margin: 0
+  font-kerning: normal ;
+  margin: 0;
+  transition: $primary-transition;
 }
 
 svg {
@@ -82,26 +83,64 @@ svg {
 // 3. Animations
 // -------------
 
+.swup-transition-fade-up {
+  transition: opacity 0.5s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.is-animating .swup-transition-fade-up {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.swup-transition-fade {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+html.is-animating .swup-transition-fade {
+  opacity: 0;
+}
+
+.swup-transition-color {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+html.is-animating .swup-transition-color {
+  opacity: 0;
+}
+
+// 2. Loading
+// ----------
+
+.loader {
+    z-index: 10;
+    position: fixed;
+    background: $white;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; 
+    opacity: 0;
+    visibility: visible; 
+    transform: translateY(0%);
+    transition: transform 800ms;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    overflow: hidden;
+  &.loading {
+    opacity: 1;
+  }
+  &.loaded {
+    transform: translateY(-100%);
+    transition: transform 800ms;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
 // 4. Color
 // --------
-
-.white {
-  color: $white;
-}
-
-.medium-gray {
-  color: $medium-gray;
-  @include links ($medium-gray, $black);
-}
-
-.light-gray {
-  color: $light-gray;
-}
-
-.dark-gray {
-  color: $dark-gray;
-  @include links ($dark-gray, $black);
-}
 
 .primary-color {
   color: get-color(primary);
@@ -111,36 +150,69 @@ svg {
   color: get-color(secondary);
 }
 
-.light-gray-background {
+.primary-background-color {
+  background-color: get-color(primary);
+  color: $white;
+  @include links($white, $secondary-color)
+}
+
+
+.secondary-background-color {
+  background-color: get-color(secondary);
+  color: $primary-color;
+  @include links($primary-color, $secondary-color)
+}
+
+.light-gray-background-color {
   background-color: $light-gray;
+  color: $black;
+  @include links($primary-color, $secondary-color)
 }
 
-.medium-gray-background {
-  background-color: $medium-gray;
-}
-
-.dark-gray-background {
+.dark-gray-background-color {
   background-color: $dark-gray;
+  color: $white;
+  @include links($primary-color, $secondary-color)
 }
 
-.black-background {
+
+.black-background-color {
   background-color: $black;
-  @include links ($dark-gray, $medium-gray);
+  color: $white;
+  @include links($white, $secondary-color)
+}
+
+.white {
+  color: $white;
+  @include links ($white, $medium-gray);
+}
+
+.medium-gray {
+  color: $medium-gray;
+  @include links ($medium-gray, $black);
+}
+
+.light-gray {
+  color: $light-gray;
+  @include links ($light-gray, $medium-gray);
+}
+
+.dark-gray {
+  color: $dark-gray;
+  @include links ($dark-gray, $white);
+}
+
+.black {
+  color: $black;
+  @include links ($black, $medium-gray);
 }
 
 // 5. Typography
 // -------------
 
-.small {
-font-size: $small-font-size;
-}
-
 .underline {
-  border-bottom: 1px solid $white;
-}
-
-.uppercase {
-  text-transform: uppercase;
+  padding-bottom: 2px;
+  border-bottom: 3px solid;
 }
 
 i, cite, em, var, address, dfn {
@@ -148,7 +220,25 @@ i, cite, em, var, address, dfn {
 }
 
 p a {
-  border-bottom: 1px solid $black;
+  color: get-color(secondary);
+  &:hover {
+    color: get-color(primary);   
+  }
+}
+
+.link {
+  color: get-color(secondary);
+  &:hover {
+    color: get-color(primary);   
+  }
+}
+
+.logo {
+  font-family: $sans-display;
+}
+
+.sans-light {
+  font-family: $sans-light;
 }
 
 .sans-regular {
@@ -159,148 +249,306 @@ p a {
   font-family: $sans-bold;
 }
 
-ul {
-  list-style-type: none;
+.sans-display {
+  font-family: $sans-display;
+}
+
+.serif-light {
+  font-family: $serif-light;
+}
+
+.serif-regular {
+  font-family: $serif-regular;
+}
+
+.serif-italic {
+  font-family: $serif-italic;
+}
+
+.serif-bold {
+  font-family: $serif-bold;
+}
+
+.serif-display {
+  font-family: $serif-display;
+}
+
+.small {
+  font-size: $small-font-size;
 }
 
 // 6. Layout
 // ---------
 
+.wrapper {
+  @include padding(1, 1, 0, 1);
+}
+
+.image--1-1 {
+  @include aspect-ratio (1, 1);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+
+.image--5-4 {
+  @include aspect-ratio (5, 4);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--6-4 {
+  @include aspect-ratio (6, 4);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--3-4 {
+  @include aspect-ratio (3, 4);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--5-7 {
+  @include aspect-ratio (5, 7);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--7-5 {
+  @include aspect-ratio (7, 5);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--16-9 {
+  @include aspect-ratio (16, 9);
+  background-size: cover; 
+  background-position: 50%;
+}
+
+.image--24-1 {
+  @include aspect-ratio (2.4, 1);
+  background-size: cover; 
+  background-position: 50%;
+}
+
 
 // 6. Navigation
 // -------------
 
-.sticky-container {
+.navigation {
+  width: 100%;
+  .cell {
+	z-index: 14; 
+  }
+}
+
+.hamburger-inner {
+  &,
+  &::before,
+  &::after {
+    background-color: $primary-color;
+  }
+}
+
+// 9. Home
+// -------
+
+.off-canvas .menu .active > a {
+  background: transparent;
+  color: $black;
+}
+
+.swiper-button-prev-test,
+.swiper-button-next-test {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+
+.swiper-button-prev-test {
+  left: 0rem;
+  right: auto;
+}
+.swiper-button-next-test {
+  right: 0rem;
+  left: auto;
+}
+
+.swiper-button-prev-test {
+cursor: w-resize;
+cursor: url('/assets/img/arrow-left.png') 16 16, auto !important;
+cursor: -webkit-image-set(
+url('/assets/img/arrow-left.png') 1x,
+url('/assets/img/arrow-left@2x.png') 2x,
+url('/assets/img/arrow-left@3x.png') 3x
+) 16 16, auto !important;
+}
+
+.swiper-button-next-test {
+  cursor: e-resize;
+  cursor: url('/assets/img/arrow-right.png') 16 16, auto !important;
+  cursor: -webkit-image-set(
+  url('/assets/img/arrow-right.png') 1x,
+  url('/assets/img/arrow-right@2x.png') 2x,
+  url('/assets/img/arrow-right@3x.png') 3x
+  ) 16 16, auto !important;
 }
 
 
-// 6. Images
-// ---------
 
-.image--portrait {
-  @include breakpoint(small) {
-  @include aspect-ratio (5, 7);
+
+.excerpt {
+  .content {
+    @include opacity(0);
   }
-  @include breakpoint(medium) {
-  @include aspect-ratio (5, 7);
+  &:hover .content {
+    transition: $primary-transition;
+    background: $color--licorice;
+    background-blend-mode: multiply;
+    @include opacity(0.9);
   }
-  background-size: cover; 
-  background-position: 50%;
 }
 
-.image--square {
-  @include breakpoint(small) {
-  @include aspect-ratio (1, 1);
-  }
-  @include breakpoint(medium) {
-  @include aspect-ratio (1, 1);
-  }
-  background-size: cover; 
-  background-position: 50%;
+.footer .menu li:last-child a {
+  padding-right: 0;
 }
 
-.image--default {
-  @include aspect-ratio (1.66, 1);
-  background-size: cover; 
-  background-position: 50%;
+.active {
+  color: $primary-color !important;
 }
 
-.image--panorama {
-  @include breakpoint(small) {
-  @include aspect-ratio (7, 5);
+.hamburger-inner--active {
+  .hamburger-inner {
+    &,
+    &::before,
+    &::after {
+      background-color: $primary-color !important;
+    }
   }
-  @include breakpoint(medium) {
-  @include aspect-ratio (16, 9);
+}
+
+p:last-child {
+ margin-bottom: 0;
+}
+
+.excerpt__image {
+ transform: scale(1.04);
+}
+
+.excerpt__wrapper {
+  overflow: hidden;
+}
+
+
+[data-aos="new-animation"] {
+ filter: blur(20px);
+//  opacity: 0;
+//   transition-property: transform, opacity;
+  &.aos-animate {
+    filter: blur(0px);
+//     opacity: 1
   }
-  @include breakpoint(large) {
-  @include aspect-ratio (2.35, 1);
+}
+
+.navigation {
+  @include breakpoint(medium down) {
+  @include padding(1, 1, 0, 1);
   }
-  background-size: cover; 
-  background-position: 50%;
+  z-index: 14;
+  @include padding(2, 2, 1, 2);
 }
 
-.off-canvas-menu {
-  @include links ($dark-gray, $medium-gray);
+.footer {
+  @include breakpoint(medium down) {
+  @include padding(1, 1, 0, 1);
+  }
+  @include padding(2, 2, 1, 2);
 }
 
-.navigation--expanded {
-  @include links ($black, $medium-gray);
+.border-bottom {
+  border-bottom: 1px solid $dark-gray
 }
 
-.navigation--relative {
-  z-index: 15;
+.plyr--full-ui input[type=range] {
+  color: $black;
 }
+
+.plyr__control--overlaid {
+  background: rgba($black, .0);
+}
+
+.plyr--video .plyr__control.plyr__tab-focus,
+.plyr--video .plyr__control:hover,
+.plyr--video .plyr__control[aria-expanded=true] {
+  background: $black;
+}
+
+.plyr__control.plyr__tab-focus {
+  box-shadow: 0 0 0 5px rgba($black, .5);
+}
+
+.plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
+  background: $black;
+}
+
+.tippy-box[data-theme~='custom'] {
+  background-color: transparent;
+  color: $white;
+  font-size: 1rem;
+}
+
+.tippy-tooltip.custom-theme[data-animatefill] {
+  background-color: transparent;
+}
+
+.tippy-tooltip.custom-theme .tippy-backdrop {
+  background-color: transparent;
+}
+
+.excerpt {
+position: relative;
+overflow: hidden;
+}
+
+.video {
+  min-width: 100%; 
+  min-height: 100%;
+//   max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+.excerpt {
+  .video {
+    @include opacity(0);
+  }
+  &:hover .video {
+    @include opacity(1);
+  }
+}
+
 
 .home .navigation {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 15;
-  @include links ($white, $medium-gray);
-}
-
-.logo {
-z-index: 15;
-}
-
-.hero {
-  height: 100vh;
-}
-
-
-
-.padding-vertical-space-1 {
-  @include breakpoint(small) {
-    @include padding(1, null, 1, null);
-  }
-  @include breakpoint(medium) {
-    @include padding(2, null, 2, null);
-  }
-  @include breakpoint(large) {
-    @include padding(2, null, 2, null);
-  }
-}
-
-.padding-space-1 {
-  @include breakpoint(small) {
-    @include padding(1, 1, 1, 1);
-  }
-  @include breakpoint(medium) {
-    @include padding(3, 3, 3, 3);
-  }
-  @include breakpoint(large) {
-    @include padding(5, 5, 5, 5);
-  }
-}
-
-.navigation {
-  @include breakpoint(small) {
-    @include padding(1, 1, 1, 1);
-  }
-  @include breakpoint(medium) {
-    @include padding(1, 1, null, 1);
-  }
-  @include breakpoint(large) {
-    @include padding(1, 3, null, 3);
-  }
-  @include breakpoint(xxlarge) {
-    @include padding(2, 4, null, 4);
-  }
-}
-
-.footer {
-  @include breakpoint(small) {
-    @include padding(1, 1, 1, 1);
-  }
-  @include breakpoint(medium) {
-    @include padding(1, 1, 1, 1);
-  }
-  @include breakpoint(xxlarge) {
-    @include padding(2, 4, null, 4);
+//   border-bottom: 1px solid $white;
+  @include links ($white, $primary-color);
+  .hamburger-inner {
+    &,
+    &::before,
+    &::after {
+      background-color: $white;
+    }
   }
 }

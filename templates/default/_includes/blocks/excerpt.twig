@@ -1,0 +1,7 @@
+<a href="{{ project.url }}">
+  {% set image = project.image.one() %}
+  <div class="black-background-color excerpt">
+  <div class="image--24-1 excerpt__image" data-interchange="{% if image | length %}{% include "_includes/images/contained/16-9/interchange-img-small-12-medium-4" %}{% endif %}" data-aos="new-animation"></div>
+  </div>
+  <div class="margin-top-1 sans-bold text-uppercase">{{ project.title }}</div>
+</a>

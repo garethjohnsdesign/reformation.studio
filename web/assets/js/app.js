@@ -1,135 +1,134 @@
-// @codekit-prepend "/node_modules/jquery/dist/jquery.js";
-// @codekit-prepend "/node_modules/foundation-sites/dist/js/foundation.js";
-// @codekit-prepend "/node_modules/motion-ui/dist/motion-ui.js";
-// @codekit-prepend "/node_modules/what-input/dist/what-input.js";
-// @codekit-prepend "/node_modules/swiper/dist/js/swiper.js";
-// @codekit-prepend "/node_modules/lightgallery/dist/js/lightgallery-all.js";
-// @codekit-prepend "/node_modules/smooth-scroll/dist/smooth-scroll.polyfills.js";
-// @codekit-prepend "/node_modules/aos/dist/aos.js";
+// 1. Imports
+// ----------
+
+import $ from "jquery";
+import Plyr from 'plyr';
+import tippy, {followCursor} from 'tippy.js';
+import AOS from 'aos';
+import Swup from 'swup';
+import SwupBodyClassPlugin from "@swup/body-class-plugin";
+import SwupScrollPlugin from '@swup/scroll-plugin';
+import SwupGaPlugin from '@swup/ga-plugin';
+import SwupPreloadPlugin from '@swup/preload-plugin';
+import './lib/foundation-explicit-pieces';
 
 
-$(document).ready(function() {
+$( document ).ready( function() {
+  function init() {
 
-// 1. Foundation
-// -------------
-
+// 2. Foundation
+// ----------
+  
 Foundation.Interchange.SPECIAL_QUERIES['medium-retina'] = 'only screen and (min-width: 40em), (min-width: 40em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 40em) and (min--moz-device-pixel-ratio: 2), (min-width: 40em) and (-o-min-device-pixel-ratio: 2/1), (min-width: 40em) and (min-device-pixel-ratio: 2), (min-width: 40em) and (min-resolution: 192dpi), (min-width: 40em) and (min-resolution: 2dppx)';
 Foundation.Interchange.SPECIAL_QUERIES['large-retina'] = 'only screen and (min-width: 64em), (min-width: 64em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 64em) and (min--moz-device-pixel-ratio: 2), (min-width: 64em) and (-o-min-device-pixel-ratio: 2/1), (min-width: 64em) and (min-device-pixel-ratio: 2), (min-width: 64em) and (min-resolution: 192dpi), (min-width: 64em) and (min-resolution: 2dppx)';
 Foundation.Interchange.SPECIAL_QUERIES['xlarge-retina'] = 'only screen and (min-width: 75em), (min-width: 75em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 75em) and (min--moz-device-pixel-ratio: 2), (min-width: 75em) and (-o-min-device-pixel-ratio: 2/1), (min-width: 75em) and (min-device-pixel-ratio: 2), (min-width: 75em) and (min-resolution: 192dpi), (min-width: 75em) and (min-resolution: 2dppx)';
 Foundation.Interchange.SPECIAL_QUERIES['xxlarge-retina'] = 'only screen and (min-width: 90em), (min-width: 75em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 75em) and (min--moz-device-pixel-ratio: 2), (min-width: 75em) and (-o-min-device-pixel-ratio: 2/1), (min-width: 75em) and (min-device-pixel-ratio: 2), (min-width: 75em) and (min-resolution: 192dpi), (min-width: 75em) and (min-resolution: 2dppx)';
-
+  
 $(document).foundation();
 
 
-// 2. Cookies Policy
-// -----------------
+// 3. Loading
+// ----------
 
-/*
 $(function() {
-  if($.cookie('showed_modal') !== "true") {
-
-setTimeout(
-  function() 
-  {
-$("#cookiesPolicy").foundation("open");
-  }, 2000);
-
-    $.cookie('showed_modal', 'true', { expires: 365 }); 
-  }
+  $("video.video source").each(function() {
+    var sourceFile = $(this).attr("data-src");
+    $(this).attr("src", sourceFile);
+    var video = this.parentElement;
+    video.load();
+    video.play();
+  });
 });
-*/
 
-// 2. Animate on Scroll
+
+$('button.hamburger').on('click', function() {
+	$(this).toggleClass('active');
+});
+
+tippy('[data-tippy-content]', {
+  placement: 'bottom',
+  followCursor: true,
+  theme: 'custom',
+  flip: false,
+  plugins: [followCursor]
+})
+
+// 3. Plyr
+// ----------
+
+const player = new Plyr('#player', {
+    /* options */
+});
+
+// 3. Hamburger
+// ----------
+
+var $hamburger = $(".hamburger");
+  $hamburger.on("click", function(e) {
+    $hamburger.toggleClass("is-active");
+    // Do something else, like open/close menu
+  });
+
+
+// 4. Viewport Height Fix
+// ----------------------
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+const vh = window.innerHeight * 0.01;
+
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+
+// 5. Animate on Scroll
 // --------------------
 
 $(function() {
-  AOS.init({
-    offset: 64,
-    easing: 'ease-in-out-quart',
-    duration: 600
-  });
+  AOS.init({ 
+   offset: 32,
+   easing: 'ease-in-out-quart', 
+   duration: 600
+   });   
 });
 
 $(function() {
-  window.addEventListener('load', AOS.refresh);
+window.addEventListener('load', AOS.refresh);
 });
 
-// 2. Carousel
+
+}
+
+// 2. Page Transitions
+// -------------------
+const options = {
+  animationSelector: '[class*="swup-transition-"]',
+  containers: [ '#swup-body', '#swup-header', '#swup-navigation' ],
+  plugins: [
+    new SwupPreloadPlugin(),
+    new SwupBodyClassPlugin(),
+    new SwupGaPlugin(),
+    new SwupScrollPlugin({
+        doScrollingRightAway: false,
+        animateScroll: true,
+        scrollFriction: 0.3,
+        scrollAcceleration: 0.04
+    })
+  ]
+};
+
+const swup = new Swup( options );
+
+// 2. Run Once
 // -----------
+init();
 
-$(function() {
+swup.on( 'contentReplaced', init );
 
-    var firstSlide = Math.floor(Math.random() * 5);
-    //initialize swiper when document ready
-    var mySwiper = new Swiper ('.swiper-container', {
-
-      direction: 'horizontal',
-      initialSlide: firstSlide,
-      loop: false,
-      simulateTouch: true,
-      mousewheel: true,
-      mousewheel: {
-        invert: false,
-      },
-      speed: 1200,
-      threshold: 15,
-      loop: true,
-/*
-      autoplay: {
-        delay: 4000,
-      },
-*/
-      preventClicks: true,
-      keyboard: {
-        enabled: true,
-        onlyInViewport: false,
-      },
-
-  pagination: {
-      el: ".swiper-pagination-numbers",
-      type: "fraction"
-  },
-
-    navigation: {
-      nextEl: '.swiper-slide',
-    }
-
-   
-    });
-  });
-
-
-});
-
-
-
-
-$(window).scroll(function() {
-  
-  // selectors
-  var $window = $(window),
-      $body = $('body'),
-      $panel = $('.panel');
-  
-  // Change 33% earlier than scroll position so colour is there when you arrive.
-  var scroll = $window.scrollTop() + ($window.height() / 3);
- 
-  $panel.each(function () {
-    var $this = $(this);
-    
-    // if position is within range of this panel.
-    // So position of (position of top of div <= scroll position) && (position of bottom of div > scroll position).
-    // Remember we set the scroll to 33% earlier in scroll var.
-    if ($this.position().top <= scroll && $this.position().top + $this.height() > scroll) {
-          
-      // Remove all classes on body with color-
-      $body.removeClass(function (index, css) {
-        return (css.match (/(^|\s)color-\S+/g) || []).join(' ');
-      });
-       
-      // Add class of currently active div
-      $body.addClass('color-' + $(this).data('color'));
-    }
-  });    
-  
-}).scroll();
+} );

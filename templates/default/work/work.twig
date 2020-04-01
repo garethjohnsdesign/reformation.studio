@@ -1,0 +1,57 @@
+{% set bodyClass = 'work' %}
+
+{% if entry.seoTitle|length %}
+{% set seoTitle = entry.seoTitle %}
+{% elseif entry.title|length %}
+{% set seoTitle = entry.title %}
+{% endif %}
+
+{% if entry.seoDescription|length %}
+{% set seoDescription = entry.seoDescription|striptags|raw %}
+{% endif %}
+
+{% if entry.image|length  %}
+{% set asset = entry.image.one() %}
+{% set seoImage = craft.imager.transformImage(asset, { width: 1200, height: 630, dpr: 1, position: asset.getFocalPoint() }) %}
+{% endif %}
+
+{% set projects = craft.entries
+.section('projects')
+.all() %}
+
+{% extends "_layouts/site" %}
+
+{% block navigation %}
+{% include "_includes/global/navigation" %}
+{% endblock %}
+
+{% block main %}
+
+<!-- Content -->
+{#
+<div class="grid-x grid-padding-x grid-padding-y grid-margin-y align-center">
+  <div class="small-12 cell text-center">
+  {{ entry.copy }}
+  </div>
+</div>
+#}
+<!-- End Content -->
+
+{# Projects #}
+{% set projectCount = projects|length %}
+<div class="grid-x grid-padding-x grid-padding-y {% if projectCount > 2 %}align-left{% else %}align-center{% endif %}">
+  {% for project in projects %}
+    <div class="small-12 medium-6 {% if projectCount > 2 %}xlarge-4{% else %}xlarge-6{% endif %} cell">
+    {% include "_includes/blocks/excerpt" %}
+    </div>
+  {% endfor %}
+</div>
+{# End Projects #}
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% include "_includes/global/footer" %}
+{% endblock %}

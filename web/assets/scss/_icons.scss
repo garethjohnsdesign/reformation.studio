@@ -5,7 +5,6 @@
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
-  transition: all .35s cubic-bezier(.39, .575, .565, 1);
 }
 
 /* ==========================================
@@ -16,55 +15,7 @@ Single-colored icons can be modified like so:
 }
 ========================================== */
 
-.icon-logo {
-  width: 1.7880859375em;
-  font-size: 3rem;
-}
-
-.icon-pantone-square {
-  font-size: 8rem;
-}
-
-.icon-thick {
-  width: 6rem;
-  font-size: 3rem;
-}
-
-.icon-logo-main {
-  width: 1.7880859375em;
-  font-size: 20rem;
-}
-
-.icon-logo-share {
-  width: 1.5595703125em;
-  font-size: 20rem;
-}
-
-.icon-partners {
-  font-size: 4rem;
-}
-
-.icon-socials {
-  font-size: 1.5rem;
-}
-
-.icon-tiffany-and-co-inline {
-  width: 5.21875em;
+.icon-arrows {
   font-size: 2rem;
-}
-
-.icon-pantone {
-  width: 6.115234375em;
-}
-
-.icon-adobe {
-  width: 0.75em;
-}
-
-.icon-creative-partners {
-  font-size: 2rem;
-}
-
-.icon-menu {
-  font-size: 2rem;
+  color: $dark-gray
 }

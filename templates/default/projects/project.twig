@@ -1,0 +1,143 @@
+{% set bodyClass = 'project' %}
+
+{% if entry.seoTitle|length %}
+{% set seoTitle = entry.seoTitle %}
+{% elseif entry.title|length %}
+{% set seoTitle = entry.title %}
+{% endif %}
+
+{% if entry.seoDescription|length %}
+{% set seoDescription = entry.seoDescription|striptags|raw %}
+{% else %}
+{% set seoDescription = entry.title ~ ' for ' ~ entry.agency %}
+{% endif %}
+
+{% if entry.image|length  %}
+{% set asset = entry.image.one() %}
+{% set seoImage = craft.imager.transformImage(asset, { width: 1200, height: 630, dpr: 1, position: asset.getFocalPoint() }) %}
+{% endif %}
+
+{# Set parameters for prev/next elements list #}
+{% set params = craft.entries
+.section('projects')
+.relatedTo(entry.typeOfProject)
+.orderBy('postDate desc') %}
+
+{# Get the prev/next elements #}
+{% set prevEntry = entry.getPrev(params) %}
+{% set nextEntry = entry.getNext(params) %}
+
+
+{% extends "_layouts/site" %}
+
+
+{% block navigation %}
+{% include "_includes/global/navigation" %}
+{% endblock %}
+
+
+{% block main %}
+
+<!-- Content -->
+<div class="grid-x grid-padding-x grid-padding-y align-center">
+
+<!-- Previous -->
+<div class="medium-2 large-1 cell show-for-large project__pagination">
+  {% if prevEntry %}
+  <a href="{{ prevEntry.url }}">
+    <div class="grid-y align-center" style="height: 100%;" data-tippy-content="{{ prevEntry.title }}">
+      <div class="shrink cell text-center"><svg class="icon icon-arrows icon-arrow_back"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_back"></use></svg></div>
+    </div>
+  </a>
+  {% endif %}
+</div>
+<!-- End Previous -->
+
+<!-- Center -->
+<div class="small-12 medium-10 large-10 cell">
+
+      <div class="margin-bottom-2 sans-bold text-uppercase text-center">{{ entry.title }}</div>
+
+{% if entry.video %}
+<div class="grid-x grid-padding-x align-center">
+  <div class="small-12 cell">
+{#   	<div class="responsive-embed widescreen"> #}
+
+<div id="player" data-plyr-provider="vimeo" data-plyr-embed-id="{{ entry.video }}"></div>
+
+{#
+<div class="plyr__video-embed" id="player">
+    <iframe
+        src="https://player.vimeo.com/video/{{ entry.video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
+        allowfullscreen
+        allowtransparency
+        allow="autoplay"
+    ></iframe>
+</div>
+#}
+
+{# <div id="player" data-plyr-provider="vimeo" data-plyr-embed-id="{{ entry.video }}"></div> #}
+
+{#   	   <iframe src="https://player.vimeo.com/video/{{ entry.video }}?color=ffffff&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> #}
+{#   	</div> #}
+  </div>
+</div>
+{% endif %}
+
+
+<!-- Credits -->
+<div class="grid-x grid-padding-x align-center">
+  <div class="small-12 cell text-center">
+  
+  
+  </div>
+</div>
+<!-- End Credit -->
+
+<!-- Content -->
+<div class="grid-x grid-padding-x grid-padding-y grid-margin-y align-center">
+  <div class="small-12 cell text-center">
+  {{ entry.copy }}
+  </div>
+</div>
+<!-- End Content -->
+
+<!-- Mobile Pagination -->
+{% if nextEntry %}
+<div class="grid-x grid-padding-x align-center hide-for-large">
+  <div class="shrink cell text-center">
+    <a href="{{ nextEntry.url }}"><svg class="icon icon-arrows icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></a>
+  </div>
+</div>
+{% endif %}
+<!-- End Mobile Pagination -->
+      
+      
+      
+
+</div>
+<!-- End Center -->
+
+<!-- Next -->
+<div class="medium-2 large-1 cell show-for-large project__pagination">
+  {% if nextEntry %}
+  <a href="{{ nextEntry.url }}">
+    <div class="grid-y align-center" style="height: 100%;" data-tippy-content="{{ nextEntry.title }}">
+      <div class="shrink cell text-center"><svg class="icon icon-arrows icon-arrow_forward"><use xlink:href="/assets/icons/symbol-defs.svg#icon-arrow_forward"></use></svg></div>
+    </div>
+  </a>
+  {% endif %}
+</div>
+<!-- End Next -->
+
+</div>   
+<!-- End Content -->
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% include "_includes/global/footer" %}
+{% endblock %}

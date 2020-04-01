@@ -1,0 +1,15 @@
+$hamburger-class-name:          'hamburger' !default;   
+$hamburger-size:                32px !default;
+$hamburger-thickness:           2px !default; 
+$hamburger-color:               $white !default;
+$hamburger-color-active:        $hamburger-color !default;
+$hamburger-background:          transparent !default;
+$hamburger-background-active:   $hamburger-background !default;
+$hamburger-border-color:        transparent !default;
+$hamburger-border-width:        0 !default;
+$hamburger-opacity:             1 !default;
+$hamburger-opacity-hover:       1 !default;
+$hamburger-padding:             $hamburger-size / 10 !default;
+$hamburger-bar-spacing:         $hamburger-size / 5 !default;
+$hamburger-animation-speed:     1 !default;
+$hamburger-border-radius:       0 !default;

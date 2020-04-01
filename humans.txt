@@ -1,23 +1,20 @@
-Reformation Studio
+Gareth Johns Design + Development
 
-The team, technology and tools behind this site.
+The team, technology & tools behind this site.
 
 
-REFORMATION STUDIO TEAM
+GARETH JOHNS DESIGN + DEVELOPMENT TEAM
 --------
 
 Made with love in London.
 
 Gareth Johns
-Content, design & development
+Design + Development
 @garethjohnsabc
 
 
 TECHNOLOGY
 ----------
-
-Codekit - File Processor
-codekitapp.com
 
 Craft CMS - Content management system
 craftcms.com
@@ -27,9 +24,6 @@ foundation.zurb.com
 
 Sass - CSS pre-processor
 sass-lang.com
-
-Twig - Templating
-twig.symfony.com
 
 GitHub - Code collaboration & hosting
 github.com

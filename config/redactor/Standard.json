@@ -1,7 +1,25 @@
 {
-  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video"],
-  "plugins": ["fullscreen", "video"],
-  "linkNewTab": true,
-  "toolbarFixed": true
+    "buttons": [
+        "formatting",
+        "bold",
+        "italic",
+        "unorderedlist",
+        "orderedlist",
+        "link",
+        "image",
+        "video"
+    ],
+    "formatting": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+    ],
+    "plugins": [
+        "fullscreen",
+        "video"
+    ],
+    "toolbarFixed": true
 }
-

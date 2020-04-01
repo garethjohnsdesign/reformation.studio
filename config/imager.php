@@ -21,13 +21,15 @@ return [
               'useCloudSourcePath' => true,
               'shardStrategy' => 'cycle',
               'getExternalImageDimensions' => true,
-              'defaultParams' => ['auto'=>'compress,format', 'q'=>50, 'fp-debug'=>false, 'blur'=>0, 'ch'=>'dpr', 'cs'=>'tinysrgb'],
+              'defaultParams' => ['auto'=>'compress,format', 'q'=>50, 'fp-debug'=>false, 'exp'=>0, 'blur'=>0, 'ch'=>'dpr', 'cs'=>'tinysrgb'],
               'apiKey' => '',
               'excludeFromPurge' => false,
           ]
       ],
         
       // Enables the use of https for image urls
+
+ // Tst
       'imgixUseHttps' => true,
       
       // Sign key (also called token). This is needed for all web proxy sources. And a good idea in general.
@@ -43,15 +45,5 @@ return [
       // When transforming external images, Imager might have to download the external file to be
       // able to figure out what the size of the transformed file is. Disable for even better performance.
       'imgixGetExternalImageDimensions' => true,
-
-      'storages' => ['gcs'],
-      'storageConfig' => [
-          'gcs' => [
-              'keyFile' => '/key/reformation-studio.json',
-              'bucket' => 'reformation-studio',
-              'folder' => '',
-          ]
-            
-      ]
  
 ];
