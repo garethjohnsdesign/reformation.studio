@@ -2,20 +2,23 @@
 
 {% block body %}
 
-<div class="shrink cell" id="swup-navigation">
+<header class="shrink cell" id="swup-navigation">
 {% block navigation %}
 {% endblock %}
-</div>
+</header>
 
-<div class="shrink cell swup-transition-fade" id="swup-body">
+<main class="shrink cell swup-transition-fade" id="swup-body">
 {% block main %}
 {% endblock %}
-</div>
+</main>
 
-<div class="shrink cell" id="swup-footer">
+<footer class="shrink cell" id="swup-footer">
+{% block calltoaction %}
+{% endblock %}
+
 {% block footer %}
 {% endblock %}
-</div>
+</footer>
 
 <!-- Navigation -->
 {% include "_includes/reveal/navigation" %}

@@ -56,6 +56,16 @@
   min-height: calc(var(--vh, 1vh) * 100);
 }
 
+.hero {
+/*
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+*/
+  min-height: 50vh;
+}
+
 a {
   transition: color .35s cubic-bezier(.39, .575, .565, 1);
 }
@@ -454,13 +464,7 @@ p:last-child {
   }
 }
 
-.navigation {
-  @include breakpoint(medium down) {
-  @include padding(1, 1, 0, 1);
-  }
-  z-index: 14;
-  @include padding(2, 2, 1, 2);
-}
+
 
 .footer {
   @include breakpoint(medium down) {
@@ -537,6 +541,7 @@ overflow: hidden;
 }
 
 
+/*
 .home .navigation {
   position: absolute;
   top: 0;
@@ -552,3 +557,31 @@ overflow: hidden;
     }
   }
 }
+*/
+$scrollhide-nav-transition-speed: 1s;
+
+.navigation {
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  transition: all 0.5s cubic-bezier(0.77,0,0.18,1);
+  border-bottom: solid 0.5px transparent;
+  z-index: 14;
+  @include padding(0, 1, 0, 1);
+  @include breakpoint(medium down) {
+  @include padding(1, 1, 0, 1);
+  }
+  &.hidden {
+    transform: translateY(-100%);
+  }
+  &.is-stuck {
+    border-bottom: solid 0.5px $dark-gray;
+    background-color: $black;
+  }
+  &.is-anchored {
+//     @include padding(2, 2, 1, 2);
+  }
+}
+
+main {}

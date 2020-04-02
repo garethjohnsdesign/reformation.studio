@@ -22,36 +22,51 @@
 <div class="grid-container">
 
     <div class="grid-x grid-padding-x grid-padding-y align-justify">
-      <div class="shrink cell">
-      {{entry.copy}}
+      <div class="small-12 large-6 cell">
+      
+        <div class="grid-x grid-padding-x grid-padding-y align-justify">
+          <div class="shrink cell">
+          {{entry.copy}}
+          </div>
+        </div>
+    
+        <div class="grid-x grid-padding-x grid-padding-y align-justify">
+          <div class="shrink cell">
+          <div>{{company.address}}</div>
+          <div>{{company.phoneNumber}}</div>
+          </div>
+        </div>
+
       </div>
+
+      <div class="small-12 large-6 cell">
+      
+      <form method="post" action="" accept-charset="UTF-8">
+          {{ csrfInput() }}
+          <input type="hidden" name="action" value="contact-form/send">
+          {{ redirectInput('contact/thanks') }}
+
+      
+          <h3><label for="from-email">Your Email</label></h3>
+          <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
+
+      
+          <h3><label for="subject">Subject</label></h3>
+          <input id="subject" type="text" name="subject" value="{{ message.subject ?? '' }}">
+
+      
+          <h3><label for="message">Message</label></h3>
+          <textarea rows="10" cols="40" id="message" name="message">{{ message.message ?? '' }}</textarea>
+      
+          <input type="submit" class="button" value="Send">
+      </form>
+
+      </div>
+
     </div>
 
-    <div class="grid-x grid-padding-x grid-padding-y align-justify">
-      <div class="shrink cell">
-      <h4>{{company.address}}</h4>
-      <h4>{{company.phoneNumber}}</h4>
-      </div>
-    </div>
+
     
-    <!-- Terms and Privacy -->
-    <div class="grid-x grid-padding-x grid-padding-y align-justify">
-      <div class="shrink cell">
-        <ul class="menu simple">
-         {% for block in socials.socials.all() %}
-          {% switch block.type %}
-            {% case "instagram" %}
-              <li><a href="{{block.socialLink}}" target="_blank">Instagram</a></li>
-            {% case "vimeo" %}
-              <li><a href="{{block.socialLink}}" target="_blank">Vimeo</a></li>
-          {% endswitch %}
-          {% endfor %}
-         <li><a href="/terms">Terms</a></li>
-         <li><a href="/privacy-policy">Privacy</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- End Terms and Privacy -->
 
 </div>
 {% endblock %}

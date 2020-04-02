@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "87d1025654dac9f345ab50fa2dc98aaa",
+    "content-hash": "08041c8a400d26289bef7a1db602ac6a",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -519,11 +519,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.4.11",
+            "version": "3.4.12",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/a028f6003a3c3985cdedfb95407284ca3daf3faa",
-                "reference": "a028f6003a3c3985cdedfb95407284ca3daf3faa",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/2090328563329fba5423da6466b5c53f4af8421a",
+                "reference": "2090328563329fba5423da6466b5c53f4af8421a",
                 "shasum": ""
             },
             "require": {
@@ -604,7 +604,107 @@
                 "docs": "https://docs.craftcms.com/v3/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2020-03-26T23:22:31+00:00"
+            "time": "2020-03-31T18:43:58+00:00"
+        },
+        {
+            "name": "craftcms/contact-form",
+            "version": "2.2.6",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/contact-form/zipball/680986ad8742b3e402d0f56756e3eb85c33d0b3d",
+                "reference": "680986ad8742b3e402d0f56756e3eb85c33d0b3d",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC11"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Contact Form",
+                "handle": "contact-form",
+                "documentationUrl": "https://github.com/craftcms/contact-form/blob/v2/README.md",
+                "components": {
+                    "mailer": "craft\\contactform\\Mailer"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\contactform\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Add a simple contact form to your Craft CMS site",
+            "keywords": [
+                "cms",
+                "contact",
+                "craftcms",
+                "form",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/contact-form/issues?state=open",
+                "source": "https://github.com/craftcms/contact-form",
+                "docs": "https://github.com/craftcms/contact-form/blob/v2/README.md",
+                "rss": "https://github.com/craftcms/contact-form/commits/v2.atom"
+            },
+            "time": "2019-12-17T23:54:03+00:00"
+        },
+        {
+            "name": "craftcms/contact-form-honeypot",
+            "version": "1.0.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/contact-form-honeypot/zipball/57f4e16c1d24074dcd5575440bcfe7bf6c3b8de0",
+                "reference": "57f4e16c1d24074dcd5575440bcfe7bf6c3b8de0",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-beta.20"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Contact Form Honeypot",
+                "handle": "contact-form-honeypot",
+                "changelogUrl": "https://raw.githubusercontent.com/craftcms/contact-form-honeypot/master/CHANGELOG.md",
+                "downloadUrl": "https://github.com/craftcms/contact-form-honeypot/archive/master.zip"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\contactform\\honeypot\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Add a honeypot captcha to your Craft CMS contact form",
+            "keywords": [
+                "cms",
+                "craftcms",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/contact-form-honeypot/issues?state=open",
+                "source": "https://github.com/craftcms/contact-form-honeypot",
+                "docs": "https://github.com/craftcms/contact-form-honeypot",
+                "rss": "https://github.com/craftcms/contact-form-honeypot/commits/master.atom"
+            },
+            "time": "2017-12-05T00:55:45+00:00"
         },
         {
             "name": "craftcms/google-cloud",
@@ -4318,11 +4418,11 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.6",
+            "version": "v4.4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/20bc0c1068565103075359f5ce9e0639b36f92d1",
-                "reference": "20bc0c1068565103075359f5ce9e0639b36f92d1",
+                "url": "https://api.github.com/repos/symfony/console/zipball/10bb3ee3c97308869d53b3e3d03f6ac23ff985f7",
+                "reference": "10bb3ee3c97308869d53b3e3d03f6ac23ff985f7",
                 "shasum": ""
             },
             "require": {
@@ -4375,15 +4475,15 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-16T08:56:54+00:00"
+            "time": "2020-03-30T11:41:10+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.6",
+            "version": "v4.4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/6d4fdf28187250f671c1edc9cf921ebfb7fe3809",
-                "reference": "6d4fdf28187250f671c1edc9cf921ebfb7fe3809",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/fe297193bf2e6866ed900ed2d5869362768df6a7",
+                "reference": "fe297193bf2e6866ed900ed2d5869362768df6a7",
                 "shasum": ""
             },
             "require": {
@@ -4419,15 +4519,15 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-16T08:56:54+00:00"
+            "time": "2020-03-27T16:54:36+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.4.6",
+            "version": "v4.4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/ea69c129aed9fdeca781d4b77eb20b62cf5d5357",
-                "reference": "ea69c129aed9fdeca781d4b77eb20b62cf5d5357",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/5729f943f9854c5781984ed4907bbb817735776b",
+                "reference": "5729f943f9854c5781984ed4907bbb817735776b",
                 "shasum": ""
             },
             "require": {
@@ -4462,7 +4562,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2020-02-14T07:42:58+00:00"
+            "time": "2020-03-27T16:54:36+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -4892,11 +4992,11 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.4.6",
+            "version": "v4.4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/b9863d0f7b684d7c4c13e665325b5ff047de0aee",
-                "reference": "b9863d0f7b684d7c4c13e665325b5ff047de0aee",
+                "url": "https://api.github.com/repos/symfony/process/zipball/3e40e87a20eaf83a1db825e1fa5097ae89042db3",
+                "reference": "3e40e87a20eaf83a1db825e1fa5097ae89042db3",
                 "shasum": ""
             },
             "require": {
@@ -4931,7 +5031,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-23T12:37:11+00:00"
+            "time": "2020-03-27T16:54:36+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -5098,11 +5198,11 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.0.6",
+            "version": "v5.0.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/254110c423a49c45fa611414f114cfa9844eed87",
-                "reference": "254110c423a49c45fa611414f114cfa9844eed87",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/f74a126acd701392eef2492a17228d42552c86b5",
+                "reference": "f74a126acd701392eef2492a17228d42552c86b5",
                 "shasum": ""
             },
             "require": {
@@ -5157,15 +5257,15 @@
                 "debug",
                 "dump"
             ],
-            "time": "2020-03-18T07:16:55+00:00"
+            "time": "2020-03-27T16:56:45+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.6",
+            "version": "v4.4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/43d7a46b1f80b4fd2ecfac4a9a4cc1f22d029fbb",
-                "reference": "43d7a46b1f80b4fd2ecfac4a9a4cc1f22d029fbb",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/ef166890d821518106da3560086bfcbeb4fadfec",
+                "reference": "ef166890d821518106da3560086bfcbeb4fadfec",
                 "shasum": ""
             },
             "require": {
@@ -5207,7 +5307,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-16T08:56:54+00:00"
+            "time": "2020-03-30T11:41:10+00:00"
         },
         {
             "name": "tinify/tinify",

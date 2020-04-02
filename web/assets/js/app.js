@@ -30,6 +30,21 @@ $(document).foundation();
 // 3. Loading
 // ----------
 
+/*
+var prev = 0;
+var $window = $(window);
+var nav = $('.navigation');
+
+$window.off('scroll');
+$window.on('scroll', function() {
+    var scrollTop = $window.scrollTop();
+    if (scrollTop < 0) scrollTop = 0;
+    nav.toggleClass('hidden', scrollTop > prev);
+    prev = scrollTop;
+});
+*/
+
+
 $(function() {
   $("video.video source").each(function() {
     var sourceFile = $(this).attr("data-src");

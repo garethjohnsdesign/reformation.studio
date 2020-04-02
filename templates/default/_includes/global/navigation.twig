@@ -14,32 +14,34 @@
 <!-- End Mobile Navigation -->
 
 <!-- Desktop Navigation -->
-<div class="grid-x grid-padding-x grid-padding-y align-justify align-middle navigation show-for-large " id="swup-header" style="z-index: 14">
+<div data-sticky-container>
+<div data-sticky data-options="marginTop:0;" style="width:100%" class="navigation">
 
-  <div class="shrink cell">
-    <a class="text-uppercase sans-bold h4" data-toggle="overlayNavigation">{{ siteName }}</a>
+
+
+  <div class="grid-x grid-padding-x grid-padding-y align-justify align-middle show-for-large" id="swup-header" style="z-index: 14">
+  
+    <div class="shrink cell">
+      <a href="/" class="h5 sans-bold">{{ siteName }}</a>
+    </div>
+
+    <div class="shrink cell">
+      <a class="h5 sans-bold" data-toggle="overlayNavigation">About</a>
+    </div>
+  
+    <div class="auto cell text-right">
+      <button class="hamburger hamburger--apple" aria-label="Navigation" type="button" data-toggle="overlayNavigation">
+          <div class="inner">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+          </div>
+      </button>
+    </div>
+
   </div>
 
-  <div class="shrink cell">
-{#
-    <button class="hamburger hamburger--collapse" type="button" aria-label="Navigation" id="hamburger" data-toggle="overlayNavigation hamburger" data-toggler=".hamburger-inner--active">
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
-    </button>
-#}
-    <button class="hamburger hamburger--minimal" aria-label="Navigation" type="button" data-toggle="overlayNavigation">
-        <div class="inner">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </button>
-  </div>
-{#
-  <div class="small-2 cell text-right">
-    <a href="/contact" class="h5 text-uppercase">@</a>
-  </div>
-#}
+
+</div>
 </div>
 <!-- End Desktop Navigation -->

@@ -51,7 +51,7 @@
 @include foundation-xy-grid-classes;
 @include foundation-typography;
 @include foundation-button;
-// @include foundation-forms;
+@include foundation-forms;
 // @include foundation-range-input;
 // @include foundation-accordion;
 // @include foundation-accordion-menu;
@@ -77,7 +77,7 @@
 // @include foundation-progress-element;
 // @include foundation-meter-element;
 // @include foundation-slider;
-// @include foundation-sticky;
+@include foundation-sticky;
 @include foundation-reveal;
 // @include foundation-switch;
 // @include foundation-table;
